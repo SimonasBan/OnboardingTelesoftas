@@ -1,0 +1,7 @@
+
+*.dll
+OnboardingWeatherAPI/OnboardingWeatherAPI/bin/Debug/net6.0/OnboardingWeatherAPI.dll
+*.dll
+OnboardingWeatherAPI/OnboardingWeatherAPI/bin/Debug/net6.0/OnboardingWeatherAPI.pdb
+OnboardingWeatherAPI/OnboardingWeatherAPI/bin/Debug/net6.0/OnboardingWeatherAPI.dll
+OnboardingWeatherAPI/.vs/OnboardingWeatherAPI/v17/.suo

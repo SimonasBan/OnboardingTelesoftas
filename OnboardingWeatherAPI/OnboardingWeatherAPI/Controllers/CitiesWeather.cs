@@ -52,7 +52,6 @@ namespace OnboardingWeatherAPI.Controllers
     }
 }
 
-//TODO: Push to git.
 
 //Su HTTP codes susipazint
 //Jei ka, tai toliau servisus
