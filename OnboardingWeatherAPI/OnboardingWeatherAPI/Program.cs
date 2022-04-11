@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
+using OnboardingWeatherAPI.Models.Shared;
+using OnboardingWeatherAPI.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +17,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseSq);
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,7 +32,19 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    //
+    app.UseDeveloperExceptionPage();
+    app.UseMigrationsEndPoint();
 }
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+
+//    var context = services.GetRequiredService<ApplicationDbContext>();
+//    context.Database.EnsureCreated();
+//    // DbInitializer.Initialize(context);
+//}
 
 app.UseHttpsRedirection();
 

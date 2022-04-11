@@ -7,6 +7,7 @@ namespace OnboardingWeatherAPI.Controllers
     [ApiController]
     public class CitiesWeather : ControllerBase
     {
+
         //Get a list of available cities;    ---    GET /cities
         [HttpGet]
         public IEnumerable<string> GetAvailableCities()
