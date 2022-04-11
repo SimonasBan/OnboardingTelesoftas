@@ -53,3 +53,7 @@ Ankh.NoLoad
 
 #Other
 .svn
+*.dll
+*.pdb
+*.sentinel
+OnboardingWeatherAPI/.vs/OnboardingWeatherAPI/v17/.suo
