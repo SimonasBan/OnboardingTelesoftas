@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "awOfThgSgjqkZd34R8XHf90aFqddAIC+GOwmDeknlms=",
+  "Source": "OnboardingWeatherAPI",
+  "BasePath": "_content/OnboardingWeatherAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
