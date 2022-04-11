@@ -51,6 +51,5 @@ namespace OnboardingWeatherAPI.Controllers
         }
     }
 }
-
 //Su HTTP codes susipazint
 //Jei ka, tai toliau servisus
