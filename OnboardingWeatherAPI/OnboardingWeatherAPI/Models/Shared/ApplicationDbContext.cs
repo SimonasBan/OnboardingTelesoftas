@@ -7,3 +7,22 @@ namespace OnboardingWeatherAPI.Models.Shared
         public DbSet<City> City { get; set; }
     }
 }
+
+//City->has many CityWeather
+//City->has many FactualWeather
+
+/*City:
+ * 
+ * */
+
+//PredictedWeather:
+//fecthDate
+
+
+
+/*FactualWeather - non changing
+ * ->City
+ * DateTime date
+ * float temp
+ * enum resource
+ */
