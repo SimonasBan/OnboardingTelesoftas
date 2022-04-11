@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ja8Mz2oITXRPIFZ/Vym5K7ThF88FP7ia3dj50UXlBR8dyH4lTpBPkkaEk0ksE/smF5pDWrzXcdm5otEbuV/GDw==",
+  "dgSpecHash": "42RoMleQqok5FnRakLrGo8kltvYc1qHwHEYQ/yXINTW2E2Z8mnYIn5EapkRqiT7Dlh69mtwNGFj74uuXwEgQxA==",
   "success": true,
-  "projectFilePath": "F:\\Projects\\Onboarding\\Code\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\OnboardingWeatherAPI.csproj",
+  "projectFilePath": "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\OnboardingWeatherAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Simonas\\.nuget\\packages\\azure.core\\1.6.0\\azure.core.1.6.0.nupkg.sha512",
     "C:\\Users\\Simonas\\.nuget\\packages\\azure.identity\\1.3.0\\azure.identity.1.3.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Projects\\Onboarding\\Code\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\OnboardingWeatherAPI.csproj": {}
+    "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\OnboardingWeatherAPI.csproj": {}
   },
   "projects": {
-    "F:\\Projects\\Onboarding\\Code\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\OnboardingWeatherAPI.csproj": {
+    "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\OnboardingWeatherAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\Onboarding\\Code\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\OnboardingWeatherAPI.csproj",
+        "projectUniqueName": "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\OnboardingWeatherAPI.csproj",
         "projectName": "OnboardingWeatherAPI",
-        "projectPath": "F:\\Projects\\Onboarding\\Code\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\OnboardingWeatherAPI.csproj",
+        "projectPath": "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\OnboardingWeatherAPI.csproj",
         "packagesPath": "C:\\Users\\Simonas\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\Onboarding\\Code\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\obj\\",
+        "outputPath": "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
