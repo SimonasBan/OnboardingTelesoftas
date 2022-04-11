@@ -454,3 +454,5 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 XUnitTestProject1/obj/Debug/net5.0/XUnitTestProject1.csproj.AssemblyReference.cache
 .vs/CoffeeRatingSystem/DesignTimeBuild/.dtbcache.v2
+
+*.dll
