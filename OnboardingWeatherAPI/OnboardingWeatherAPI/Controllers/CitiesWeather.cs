@@ -49,9 +49,8 @@ namespace OnboardingWeatherAPI.Controllers
         {
             return $"Collected data for city with ID = {id}, From {fromDate}, to {toDate}";
         }
+
     }
 }
-
-
 //Su HTTP codes susipazint
 //Jei ka, tai toliau servisus
