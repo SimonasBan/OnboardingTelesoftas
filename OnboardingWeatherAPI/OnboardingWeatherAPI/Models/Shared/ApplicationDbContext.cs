@@ -1,10 +1,20 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace OnboardingWeatherAPI.Models.Shared
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<City> City { get; set; }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base()
+        {
+
+        }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<FactualWeatherPrediction> FactualWeatherPredictions { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
 
