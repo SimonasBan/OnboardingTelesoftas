@@ -132,3 +132,13 @@ F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\O
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Humanizer.dll
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherAPP.deps.json
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherAPP.runtimeconfig.json
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherDOMAIN.deps.json
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherDOMAIN.runtimeconfig.json
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherDOMAIN.exe
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherAPP.exe
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherAPP.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherDOMAIN.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherAPP.pdb
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherDOMAIN.pdb

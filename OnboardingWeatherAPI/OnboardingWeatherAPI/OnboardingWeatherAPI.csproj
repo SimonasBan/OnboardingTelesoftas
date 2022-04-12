@@ -22,4 +22,9 @@
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OnboardingWeatherAPP\OnboardingWeatherAPP.csproj" />
+    <ProjectReference Include="..\OnboardingWeatherDOMAIN\OnboardingWeatherDOMAIN.csproj" />
+  </ItemGroup>
+
 </Project>
