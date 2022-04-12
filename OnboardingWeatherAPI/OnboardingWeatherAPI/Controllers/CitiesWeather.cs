@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnboardingWeatherAPI.Models;
 using OnboardingWeatherAPI.Models.Shared;
 
 namespace OnboardingWeatherAPI.Controllers
@@ -19,6 +20,22 @@ namespace OnboardingWeatherAPI.Controllers
         {
             var citiesName = _context.Cities.ToList().Select(x => x.Name);
             return citiesName;
+        }
+
+        //Method for testing out db seed problem
+        [HttpGet("db")]
+        public async Task<bool> FillDb()
+        {
+            _context.FactualWeatherPredictions.Add(new FactualWeatherPrediction
+            {
+                Id = 1,
+                Date = DateTime.Now,
+                Temperature = 12.5,
+                City = _context.Cities.First(),
+                Forecaster = _context.Forecasters.First()
+            });
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         //Get a list of available dates for the city;    ---    GET /cities/1/dates
