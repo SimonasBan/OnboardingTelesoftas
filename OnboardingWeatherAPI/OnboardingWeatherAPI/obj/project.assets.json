@@ -920,43 +920,6 @@
             "rid": "win"
           }
         }
-      },
-      "OnboardingWeatherAPP/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.3",
-          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "6.0.3",
-          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.3",
-          "Microsoft.EntityFrameworkCore": "6.0.3",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.3",
-          "Microsoft.Identity.Web": "1.16.0",
-          "OnboardingWeatherDOMAIN": "1.0.0",
-          "Swashbuckle.AspNetCore": "6.2.3",
-          "System.Configuration.ConfigurationManager": "6.0.0"
-        },
-        "compile": {
-          "bin/placeholder/OnboardingWeatherAPP.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/OnboardingWeatherAPP.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "OnboardingWeatherDOMAIN/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/OnboardingWeatherDOMAIN.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/OnboardingWeatherDOMAIN.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
       }
     }
   },
@@ -2627,16 +2590,6 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "OnboardingWeatherAPP/1.0.0": {
-      "type": "project",
-      "path": "../OnboardingWeatherAPP/OnboardingWeatherAPP.csproj",
-      "msbuildProject": "../OnboardingWeatherAPP/OnboardingWeatherAPP.csproj"
-    },
-    "OnboardingWeatherDOMAIN/1.0.0": {
-      "type": "project",
-      "path": "../OnboardingWeatherDOMAIN/OnboardingWeatherDOMAIN.csproj",
-      "msbuildProject": "../OnboardingWeatherDOMAIN/OnboardingWeatherDOMAIN.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2648,8 +2601,6 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.3",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.3",
       "Microsoft.Identity.Web >= 1.16.0",
-      "OnboardingWeatherAPP >= 1.0.0",
-      "OnboardingWeatherDOMAIN >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "System.Configuration.ConfigurationManager >= 6.0.0"
     ]
@@ -2684,14 +2635,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPP\\OnboardingWeatherAPP.csproj": {
-              "projectPath": "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPP\\OnboardingWeatherAPP.csproj"
-            },
-            "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherDOMAIN\\OnboardingWeatherDOMAIN.csproj": {
-              "projectPath": "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherDOMAIN\\OnboardingWeatherDOMAIN.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

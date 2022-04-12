@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnboardingWeatherAPI", "Onb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnboardingWeatherDOMAIN", "OnboardingWeatherDOMAIN\OnboardingWeatherDOMAIN.csproj", "{CF0EE7B5-9DF8-4793-99C9-AD01288420B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnboardingWeatherAPP", "OnboardingWeatherAPP\OnboardingWeatherAPP.csproj", "{C60867C2-4233-4CBC-83AC-9C48837F0A85}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{CF0EE7B5-9DF8-4793-99C9-AD01288420B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF0EE7B5-9DF8-4793-99C9-AD01288420B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF0EE7B5-9DF8-4793-99C9-AD01288420B6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C60867C2-4233-4CBC-83AC-9C48837F0A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C60867C2-4233-4CBC-83AC-9C48837F0A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C60867C2-4233-4CBC-83AC-9C48837F0A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C60867C2-4233-4CBC-83AC-9C48837F0A85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
