@@ -23,9 +23,9 @@ namespace OnboardingWeatherAPI.Controllers
         [HttpGet]
         public async Task<IEnumerable<string>?> GetAvailableCities()
         {
-            //var citiesNames = await _cityWeather.GetAvailableCitiesNames();
-            return await _context.Cities.Select
-                (e => e.Name).ToListAsync();
+            return await _cityWeather.GetAvailableCitiesNames();
+            //return await _context.Cities.Select
+            //    (e => e.Name).ToListAsync();
         }
 
         //Method for testing out db seed problem
