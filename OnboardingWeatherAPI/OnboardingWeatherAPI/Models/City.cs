@@ -4,7 +4,7 @@
     {
         public City()
         {
-            FactualWeatherPredictions = new HashSet<FactualWeatherPrediction>();
+            //FactualWeatherPredictions = new HashSet<FactualWeatherPrediction>();
         }
 
         public long Id { get; set; }

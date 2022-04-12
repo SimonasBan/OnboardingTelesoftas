@@ -4,7 +4,7 @@
     {
         public Forecaster()
         {
-            FactualWeatherPredictions = new HashSet<FactualWeatherPrediction>();
+            //FactualWeatherPredictions = new HashSet<FactualWeatherPrediction>();
         }
         public long Id { get; set; }
         public string Name { get; set; }

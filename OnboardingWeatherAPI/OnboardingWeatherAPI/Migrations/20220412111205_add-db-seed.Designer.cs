@@ -12,7 +12,7 @@ using OnboardingWeatherAPI.Models.Shared;
 namespace OnboardingWeatherAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220412083629_add-db-seed")]
+    [Migration("20220412111205_add-db-seed")]
     partial class adddbseed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

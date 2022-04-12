@@ -2,24 +2,31 @@
 using Microsoft.AspNetCore.Mvc;
 using OnboardingWeatherAPI.Models;
 using OnboardingWeatherAPI.Models.Shared;
+using OnboardingWeatherAPI.Services;
 
 namespace OnboardingWeatherAPI.Controllers
 {
     [Route("cities")]
     [ApiController]
-    public class CitiesWeather : ControllerBase
+    public class CitiesWeatherController : ControllerBase
     {
+        //injection in startup
         private readonly ApplicationDbContext _context;
-        public CitiesWeather(ApplicationDbContext context)
+        private readonly CityWeatherService _cityWeather;
+        public CitiesWeatherController(ApplicationDbContext context, CityWeatherService cityWeather)
         {
             _context = context;
+            _cityWeather = cityWeather;
         }
         //Get a list of available cities;    ---    GET /cities
         [HttpGet]
-        public IEnumerable<string> GetAvailableCities()
+        public string GetAvailableCities()
+        //public async Task<IEnumerable<string>?> GetAvailableCities()
         {
-            var citiesName = _context.Cities.ToList().Select(x => x.Name);
-            return citiesName;
+            //var citiesNames = await _cityWeather.GetAvailableCitiesNames();
+            //var citiesNames = new List<string>();
+            //citiesNames.Add("aa");
+            return "test";
         }
 
         //Method for testing out db seed problem
@@ -28,7 +35,7 @@ namespace OnboardingWeatherAPI.Controllers
         {
             _context.FactualWeatherPredictions.Add(new FactualWeatherPrediction
             {
-                Id = 1,
+                //Id = 1,
                 Date = DateTime.Now,
                 Temperature = 12.5,
                 City = _context.Cities.First(),

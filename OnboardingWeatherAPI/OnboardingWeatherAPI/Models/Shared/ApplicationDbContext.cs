@@ -18,13 +18,43 @@ namespace OnboardingWeatherAPI.Models.Shared
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new FactualWeatherPredictionConfiguration());
-            modelBuilder.Seed();
+            modelBuilder.SeedCitiesAndForecaster();
         }
     }
 
     public static class ModelBuilderExtensions
     {
-        public static void Seed(this ModelBuilder modelBuilder)
+        public static void SeedFactualWeatherPrediction(this ModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<FactualWeatherPrediction>().HasData(
+            //    new FactualWeatherPrediction
+            //    {
+            //        Id = 1,
+            //        Date = DateTime.Now,
+            //        Temperature = 12.5,
+            //        City = kaunas,
+            //        Forecaster = openWeather
+            //    },
+            //    new FactualWeatherPrediction
+            //    {
+            //        Id = 2,
+            //        Date = DateTime.Now.AddDays(-1),
+            //        Temperature = 11.2,
+            //        City = kaunas,
+            //        Forecaster = openWeather
+            //    },
+            //    new FactualWeatherPrediction
+            //    {
+            //        Id = 2,
+            //        Date = DateTime.Now,
+            //        Temperature = 10.2,
+            //        City = vilnius,
+            //        Forecaster = openWeather
+            //    }
+            //);
+        }
+
+        public static void SeedCitiesAndForecaster(this ModelBuilder modelBuilder)
         {
             var kaunas = new City
             {
@@ -60,32 +90,7 @@ namespace OnboardingWeatherAPI.Models.Shared
                 openWeather
             );
 
-            //modelBuilder.Entity<FactualWeatherPrediction>().HasData(
-            //    new FactualWeatherPrediction
-            //    {
-            //        Id = 1,
-            //        Date = DateTime.Now,
-            //        Temperature = 12.5,
-            //        City = kaunas,
-            //        Forecaster = openWeather
-            //    },
-            //    new FactualWeatherPrediction
-            //    {
-            //        Id = 2,
-            //        Date = DateTime.Now.AddDays(-1),
-            //        Temperature = 11.2,
-            //        City = kaunas,
-            //        Forecaster = openWeather
-            //    },
-            //    new FactualWeatherPrediction
-            //    {
-            //        Id = 2,
-            //        Date = DateTime.Now,
-            //        Temperature = 10.2,
-            //        City = vilnius,
-            //        Forecaster = openWeather
-            //    }
-            //);
+            
         }
     }
 }
