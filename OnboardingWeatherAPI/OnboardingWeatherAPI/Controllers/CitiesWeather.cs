@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnboardingWeatherAPI.Models.Shared;
 
 namespace OnboardingWeatherAPI.Controllers
 {
@@ -7,14 +8,17 @@ namespace OnboardingWeatherAPI.Controllers
     [ApiController]
     public class CitiesWeather : ControllerBase
     {
-
+        private readonly ApplicationDbContext _context;
+        public CitiesWeather(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         //Get a list of available cities;    ---    GET /cities
         [HttpGet]
         public IEnumerable<string> GetAvailableCities()
         {
-            var cities = new List<string>();
-            cities.Add("Kaunas");
-            return cities;
+            var citiesName = _context.Cities.ToList().Select(x => x.Name);
+            return citiesName;
         }
 
         //Get a list of available dates for the city;    ---    GET /cities/1/dates

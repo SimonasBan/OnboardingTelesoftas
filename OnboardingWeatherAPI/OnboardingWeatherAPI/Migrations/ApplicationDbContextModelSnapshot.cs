@@ -36,7 +36,7 @@ namespace OnboardingWeatherAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("OnboardingWeatherAPI.Models.FactualWeatherPrediction", b =>
@@ -50,17 +50,39 @@ namespace OnboardingWeatherAPI.Migrations
                     b.Property<long>("CityId")
                         .HasColumnType("bigint");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("ForecasterId")
+                        .HasColumnType("bigint");
+
                     b.Property<double>("Temperature")
                         .HasColumnType("float");
-
-                    b.Property<DateTime>("WeatherDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("FactualWeatherPredictions");
+                    b.HasIndex("ForecasterId");
+
+                    b.ToTable("FactualWeatherPredictions", (string)null);
+                });
+
+            modelBuilder.Entity("OnboardingWeatherAPI.Models.Forecaster", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Forecasters", (string)null);
                 });
 
             modelBuilder.Entity("OnboardingWeatherAPI.Models.FactualWeatherPrediction", b =>
@@ -71,10 +93,23 @@ namespace OnboardingWeatherAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("OnboardingWeatherAPI.Models.Forecaster", "Forecaster")
+                        .WithMany("FactualWeatherPredictions")
+                        .HasForeignKey("ForecasterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("City");
+
+                    b.Navigation("Forecaster");
                 });
 
             modelBuilder.Entity("OnboardingWeatherAPI.Models.City", b =>
+                {
+                    b.Navigation("FactualWeatherPredictions");
+                });
+
+            modelBuilder.Entity("OnboardingWeatherAPI.Models.Forecaster", b =>
                 {
                     b.Navigation("FactualWeatherPredictions");
                 });

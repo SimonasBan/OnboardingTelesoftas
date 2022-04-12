@@ -12,8 +12,8 @@ using OnboardingWeatherAPI.Models.Shared;
 namespace OnboardingWeatherAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220411142017_add-city-and-factual-weather-prediction")]
-    partial class addcityandfactualweatherprediction
+    [Migration("20220412075602_add-city-forecaster-and-factual-weather-predictio")]
+    partial class addcityforecasterandfactualweatherpredictio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,17 +52,39 @@ namespace OnboardingWeatherAPI.Migrations
                     b.Property<long>("CityId")
                         .HasColumnType("bigint");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("ForecasterId")
+                        .HasColumnType("bigint");
+
                     b.Property<double>("Temperature")
                         .HasColumnType("float");
-
-                    b.Property<DateTime>("WeatherDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
 
+                    b.HasIndex("ForecasterId");
+
                     b.ToTable("FactualWeatherPredictions");
+                });
+
+            modelBuilder.Entity("OnboardingWeatherAPI.Models.Forecaster", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Forecasters");
                 });
 
             modelBuilder.Entity("OnboardingWeatherAPI.Models.FactualWeatherPrediction", b =>
@@ -73,10 +95,23 @@ namespace OnboardingWeatherAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("OnboardingWeatherAPI.Models.Forecaster", "Forecaster")
+                        .WithMany("FactualWeatherPredictions")
+                        .HasForeignKey("ForecasterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("City");
+
+                    b.Navigation("Forecaster");
                 });
 
             modelBuilder.Entity("OnboardingWeatherAPI.Models.City", b =>
+                {
+                    b.Navigation("FactualWeatherPredictions");
+                });
+
+            modelBuilder.Entity("OnboardingWeatherAPI.Models.Forecaster", b =>
                 {
                     b.Navigation("FactualWeatherPredictions");
                 });
