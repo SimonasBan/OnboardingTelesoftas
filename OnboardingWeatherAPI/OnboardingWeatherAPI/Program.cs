@@ -5,6 +5,7 @@ using OnboardingWeatherAPI.Models.Shared;
 using OnboardingWeatherAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using OnboardingWeatherAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddScoped<CityWeatherService>();
 
 var app = builder.Build();
 

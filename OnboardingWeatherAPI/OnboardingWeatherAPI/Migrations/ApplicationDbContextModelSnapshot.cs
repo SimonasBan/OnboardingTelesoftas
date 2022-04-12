@@ -89,7 +89,7 @@ namespace OnboardingWeatherAPI.Migrations
                         {
                             Id = 1L,
                             CityId = 1L,
-                            Date = new DateTime(2022, 4, 12, 15, 39, 3, 286, DateTimeKind.Local).AddTicks(4376),
+                            Date = new DateTime(2022, 4, 12, 16, 20, 5, 47, DateTimeKind.Local).AddTicks(1450),
                             ForecasterId = 1L,
                             Temperature = 12.5
                         },
@@ -97,7 +97,7 @@ namespace OnboardingWeatherAPI.Migrations
                         {
                             Id = 2L,
                             CityId = 1L,
-                            Date = new DateTime(2022, 4, 11, 15, 39, 3, 286, DateTimeKind.Local).AddTicks(4404),
+                            Date = new DateTime(2022, 4, 11, 16, 20, 5, 47, DateTimeKind.Local).AddTicks(1481),
                             ForecasterId = 1L,
                             Temperature = 11.199999999999999
                         },
@@ -105,7 +105,7 @@ namespace OnboardingWeatherAPI.Migrations
                         {
                             Id = 3L,
                             CityId = 2L,
-                            Date = new DateTime(2022, 4, 12, 15, 39, 3, 286, DateTimeKind.Local).AddTicks(4406),
+                            Date = new DateTime(2022, 4, 12, 16, 20, 5, 47, DateTimeKind.Local).AddTicks(1484),
                             ForecasterId = 1L,
                             Temperature = 10.199999999999999
                         });

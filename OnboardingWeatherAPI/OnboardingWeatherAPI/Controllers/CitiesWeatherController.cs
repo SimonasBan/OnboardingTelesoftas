@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OnboardingWeatherAPI.Models;
 using OnboardingWeatherAPI.Models.Shared;
 using OnboardingWeatherAPI.Services;
@@ -20,13 +21,11 @@ namespace OnboardingWeatherAPI.Controllers
         }
         //Get a list of available cities;    ---    GET /cities
         [HttpGet]
-        public string GetAvailableCities()
-        //public async Task<IEnumerable<string>?> GetAvailableCities()
+        public async Task<IEnumerable<string>?> GetAvailableCities()
         {
-            //var citiesNames = await _cityWeather.GetAvailableCitiesNames();
-            //var citiesNames = new List<string>();
-            //citiesNames.Add("aa");
-            return "test";
+            return await _cityWeather.GetAvailableCitiesNames();
+            //return await _context.Cities.Select
+            //    (e => e.Name).ToListAsync();
         }
 
         //Method for testing out db seed problem
