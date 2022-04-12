@@ -12,7 +12,7 @@ using OnboardingWeatherAPI.Models.Shared;
 namespace OnboardingWeatherAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220412111205_add-db-seed")]
+    [Migration("20220412123903_add-db-seed")]
     partial class adddbseed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,6 +85,32 @@ namespace OnboardingWeatherAPI.Migrations
                     b.HasIndex("ForecasterId");
 
                     b.ToTable("FactualWeatherPredictions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CityId = 1L,
+                            Date = new DateTime(2022, 4, 12, 15, 39, 3, 286, DateTimeKind.Local).AddTicks(4376),
+                            ForecasterId = 1L,
+                            Temperature = 12.5
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CityId = 1L,
+                            Date = new DateTime(2022, 4, 11, 15, 39, 3, 286, DateTimeKind.Local).AddTicks(4404),
+                            ForecasterId = 1L,
+                            Temperature = 11.199999999999999
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CityId = 2L,
+                            Date = new DateTime(2022, 4, 12, 15, 39, 3, 286, DateTimeKind.Local).AddTicks(4406),
+                            ForecasterId = 1L,
+                            Temperature = 10.199999999999999
+                        });
                 });
 
             modelBuilder.Entity("OnboardingWeatherAPI.Models.Forecaster", b =>

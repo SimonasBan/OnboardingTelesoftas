@@ -18,44 +18,15 @@ namespace OnboardingWeatherAPI.Models.Shared
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new FactualWeatherPredictionConfiguration());
-            modelBuilder.SeedCitiesAndForecaster();
+            modelBuilder.Seed();
         }
     }
 
     public static class ModelBuilderExtensions
     {
-        public static void SeedFactualWeatherPrediction(this ModelBuilder modelBuilder)
+        public static void Seed(this ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<FactualWeatherPrediction>().HasData(
-            //    new FactualWeatherPrediction
-            //    {
-            //        Id = 1,
-            //        Date = DateTime.Now,
-            //        Temperature = 12.5,
-            //        City = kaunas,
-            //        Forecaster = openWeather
-            //    },
-            //    new FactualWeatherPrediction
-            //    {
-            //        Id = 2,
-            //        Date = DateTime.Now.AddDays(-1),
-            //        Temperature = 11.2,
-            //        City = kaunas,
-            //        Forecaster = openWeather
-            //    },
-            //    new FactualWeatherPrediction
-            //    {
-            //        Id = 2,
-            //        Date = DateTime.Now,
-            //        Temperature = 10.2,
-            //        City = vilnius,
-            //        Forecaster = openWeather
-            //    }
-            //);
-        }
-
-        public static void SeedCitiesAndForecaster(this ModelBuilder modelBuilder)
-        {
+            //City seed
             var kaunas = new City
             {
                 Id = 1,
@@ -79,7 +50,7 @@ namespace OnboardingWeatherAPI.Models.Shared
                 vilnius,
                 klaipeda
             );
-
+            //Forecaster seed
             var openWeather = new Forecaster
             {
                 Id = 1,
@@ -89,8 +60,33 @@ namespace OnboardingWeatherAPI.Models.Shared
             modelBuilder.Entity<Forecaster>().HasData(
                 openWeather
             );
-
-            
+            //FactualWeatherPrediction seed
+            modelBuilder.Entity<FactualWeatherPrediction>().HasData(
+                new FactualWeatherPrediction
+                {
+                    Id = 1,
+                    Date = DateTime.Now,
+                    Temperature = 12.5,
+                    CityId = 1,
+                    ForecasterId = 1
+                },
+                new FactualWeatherPrediction
+                {
+                    Id = 2,
+                    Date = DateTime.Now.AddDays(-1),
+                    Temperature = 11.2,
+                    CityId = 1,
+                    ForecasterId = 1
+                },
+                new FactualWeatherPrediction
+                {
+                    Id = 3,
+                    Date = DateTime.Now,
+                    Temperature = 10.2,
+                    CityId = 2,
+                    ForecasterId = 1
+                }
+            );
         }
     }
 }
