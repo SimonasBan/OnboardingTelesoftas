@@ -16,14 +16,25 @@ namespace OnboardingWeatherAPI.Controllers
         //injection in startup
         private readonly ApplicationDbContext _context;
         private readonly CityWeatherService _cityWeather;
-        private readonly BBCWeatherService _forecastService;
+        private readonly OpenWeatherWeatherService _openWeatherWeatherService;
         public CitiesWeatherController(ApplicationDbContext context, CityWeatherService cityWeather,
-            BBCWeatherService forecastService)
+            OpenWeatherWeatherService openWeatherWeatherService)
         {
             _context = context;
             _cityWeather = cityWeather;
-            _forecastService = forecastService;
+            _openWeatherWeatherService = openWeatherWeatherService;
         }
+
+        //Get a list of available cities;    ---    GET /cities
+        [HttpGet("GetCurrentWeatherAsyncTest")]
+        public async Task<string?> GetCurrentWeatherAsyncTest()
+        {
+            var res = await _openWeatherWeatherService.GetCurrentWeatherAsync();
+            return (string)res["main"]["temp"];
+        }
+
+
+
         //Get a list of available cities;    ---    GET /cities
         [HttpGet]
         public async Task<IEnumerable<string>?> GetAvailableCities()

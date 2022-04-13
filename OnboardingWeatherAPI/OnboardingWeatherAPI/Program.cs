@@ -27,7 +27,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddScoped<CityWeatherService>();
-builder.Services.AddScoped<BBCWeatherService>();
+builder.Services.AddScoped<OpenWeatherWeatherService>();
 
 var app = builder.Build();
 
