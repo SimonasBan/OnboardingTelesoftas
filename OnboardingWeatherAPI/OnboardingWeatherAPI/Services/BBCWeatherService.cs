@@ -1,5 +1,6 @@
 ﻿using OnboardingWeatherAPI.Models;
 using OnboardingWeatherAPI.Models.Shared;
+using System.Xml;
 
 namespace OnboardingWeatherAPI.Services
 {
@@ -10,17 +11,27 @@ namespace OnboardingWeatherAPI.Services
         {
             _context = context;
         }
-        public Task<double> GetCurrentWeatherByCity(City city)
+        public double GetCurrentWeatherByCity(City city)
         {
-            ReadXml(city.BbcForecasterData.RssCode);
+            if (city.BbcForecasterData != null)
+            {
+                ReadXml(city.BbcForecasterData.RssCode);
+            }
             //city.BbcForecasterData.RssCode
-            throw new NotImplementedException();
+            return 1;
         }
 
         private void ReadXml(string rssCode)
         {
-            var bbcUrl = "https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/";
-            bbcUrl += rssCode;
+            var urlString = "https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/";
+            urlString += rssCode;
+
+            var reader = new XmlTextReader(urlString);
+            string tempString;
+            while (reader.Read())
+            {
+                tempString = reader.Name;
+            }
         }
     }
 }
