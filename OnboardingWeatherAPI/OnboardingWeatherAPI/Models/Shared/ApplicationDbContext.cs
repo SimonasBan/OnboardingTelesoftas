@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnboardingWeatherAPI.Models.Configurations;
-using OnboardingWeatherDOMAIN.Models;
+//using OnboardingWeatherDOMAIN.Models;
 
 namespace OnboardingWeatherAPI.Models.Shared
 {
@@ -13,14 +13,14 @@ namespace OnboardingWeatherAPI.Models.Shared
         public DbSet<City> Cities { get; set; }
         //public DbSet<FactualWeatherPrediction> FactualWeatherPredictions { get; set; }
         //public DbSet<Forecaster> Forecasters { get; set; }
-        public DbSet<BbcForecasterData> BbcForecasterDatas { get; set; }
+        //public DbSet<BbcForecasterData> BbcForecasterDatas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             //modelBuilder.ApplyConfiguration(new FactualWeatherPredictionConfiguration());
-            //modelBuilder.ApplyConfiguration(new CityConfiguration());
+            modelBuilder.ApplyConfiguration(new CityConfiguration());
             //modelBuilder.ApplyConfiguration(new BbcForecasterDataConfiguration());
             //modelBuilder.Seed();
         }

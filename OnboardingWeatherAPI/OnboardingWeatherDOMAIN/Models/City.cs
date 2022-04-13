@@ -1,4 +1,4 @@
-﻿using OnboardingWeatherDOMAIN.Models;
+﻿//using OnboardingWeatherDOMAIN.Models;
 
 namespace OnboardingWeatherAPI.Models
 {
@@ -8,7 +8,7 @@ namespace OnboardingWeatherAPI.Models
         public string Name { get; set; }
 
         //public ICollection<FactualWeatherPrediction> FactualWeatherPredictions { get; set; }
-        public BbcForecasterData? BbcForecasterData { get; set; }
+        //public BbcForecasterData? BbcForecasterData { get; set; }
     }
 }
 
