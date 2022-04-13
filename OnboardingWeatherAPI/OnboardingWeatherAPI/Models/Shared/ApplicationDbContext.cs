@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnboardingWeatherAPI.Models.Configurations;
+using OnboardingWeatherDOMAIN.Models;
 
 namespace OnboardingWeatherAPI.Models.Shared
 {
@@ -18,6 +19,7 @@ namespace OnboardingWeatherAPI.Models.Shared
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new FactualWeatherPredictionConfiguration());
+            modelBuilder.ApplyConfiguration(new CityConfiguration());
             modelBuilder.Seed();
         }
     }
@@ -45,10 +47,17 @@ namespace OnboardingWeatherAPI.Models.Shared
                 Name = "Klaipėda"
             };
 
+            var tbilisi = new City
+            {
+                Id = 4,
+                Name = "Tbilisi"
+            };
+
             modelBuilder.Entity<City>().HasData(
                 kaunas,
                 vilnius,
-                klaipeda
+                klaipeda,
+                tbilisi
             );
             //Forecaster seed
             var openWeather = new Forecaster
@@ -85,6 +94,15 @@ namespace OnboardingWeatherAPI.Models.Shared
                     Temperature = 10.2,
                     CityId = 2,
                     ForecasterId = 1
+                }
+            );
+            //BbcForecastData seed
+            modelBuilder.Entity<BbcForecasterData>().HasData(
+                new BbcForecasterData
+                {
+                    Id = 1,
+                    RssCode = 611717,
+                    CityId = 4
                 }
             );
         }

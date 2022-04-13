@@ -28,22 +28,6 @@ namespace OnboardingWeatherAPI.Controllers
             //    (e => e.Name).ToListAsync();
         }
 
-        //Method for testing out db seed problem
-        [HttpGet("db")]
-        public async Task<bool> FillDb()
-        {
-            _context.FactualWeatherPredictions.Add(new FactualWeatherPrediction
-            {
-                //Id = 1,
-                Date = DateTime.Now,
-                Temperature = 12.5,
-                City = _context.Cities.First(),
-                Forecaster = _context.Forecasters.First()
-            });
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
         //Get a list of available dates for the city;    ---    GET /cities/1/dates
         [HttpGet("{id}/dates")]
         public IEnumerable<string> GetAvailableDatesForCity([FromRoute] long id)
