@@ -1,11 +1,22 @@
 {
   "Version": 1,
-  "Hash": "QktU55+DN5T4Ux9eem7J0Cja3T3ix4YMKYPBUA3+Raw=",
+  "Hash": "R6Kav/rD9mSgGq7sFM/oZq/ldqnmPGcViG5mvwZ0VZ8=",
   "Source": "OnboardingWeatherAPI",
   "BasePath": "_content/OnboardingWeatherAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPP\\OnboardingWeather.Aplication.csproj",
+      "Version": 2,
+      "Source": "OnboardingWeather.Aplication",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
+    },
     {
       "Identity": "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherDOMAIN\\OnboardingWeatherDOMAIN.csproj",
       "Version": 2,

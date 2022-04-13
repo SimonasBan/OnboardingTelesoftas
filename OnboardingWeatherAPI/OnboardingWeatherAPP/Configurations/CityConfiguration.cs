@@ -7,10 +7,7 @@ namespace OnboardingWeatherAPI.Models.Configurations
     {
         public void Configure(EntityTypeBuilder<City> builder)
         {
-            //builder.HasO
-            //builder.HasOne(e => e.City)
-            //    .WithOne(e => e.BbcForecasterData)
-            //    .(e => e.CityId);
+            
         }
     }
 }
