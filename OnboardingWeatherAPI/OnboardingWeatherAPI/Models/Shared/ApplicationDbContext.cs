@@ -101,7 +101,7 @@ namespace OnboardingWeatherAPI.Models.Shared
                 new BbcForecasterData
                 {
                     Id = 1,
-                    RssCode = 611717,
+                    RssCode = "611717",
                     CityId = 4
                 }
             );

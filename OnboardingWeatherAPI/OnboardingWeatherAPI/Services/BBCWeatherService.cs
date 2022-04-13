@@ -12,8 +12,15 @@ namespace OnboardingWeatherAPI.Services
         }
         public Task<double> GetCurrentWeatherByCity(City city)
         {
-            //city.BBCForecasterData.RssId
+            ReadXml(city.BbcForecasterData.RssCode);
+            //city.BbcForecasterData.RssCode
             throw new NotImplementedException();
+        }
+
+        private void ReadXml(string rssCode)
+        {
+            var bbcUrl = "https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/";
+            bbcUrl += rssCode;
         }
     }
 }

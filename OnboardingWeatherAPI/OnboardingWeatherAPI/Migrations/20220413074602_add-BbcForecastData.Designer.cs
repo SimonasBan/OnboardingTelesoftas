@@ -12,7 +12,7 @@ using OnboardingWeatherAPI.Models.Shared;
 namespace OnboardingWeatherAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220413073533_add-BbcForecastData")]
+    [Migration("20220413074602_add-BbcForecastData")]
     partial class addBbcForecastData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,7 +96,7 @@ namespace OnboardingWeatherAPI.Migrations
                         {
                             Id = 1L,
                             CityId = 1L,
-                            Date = new DateTime(2022, 4, 13, 10, 35, 33, 190, DateTimeKind.Local).AddTicks(9374),
+                            Date = new DateTime(2022, 4, 13, 10, 46, 1, 892, DateTimeKind.Local).AddTicks(7685),
                             ForecasterId = 1L,
                             Temperature = 12.5
                         },
@@ -104,7 +104,7 @@ namespace OnboardingWeatherAPI.Migrations
                         {
                             Id = 2L,
                             CityId = 1L,
-                            Date = new DateTime(2022, 4, 12, 10, 35, 33, 190, DateTimeKind.Local).AddTicks(9406),
+                            Date = new DateTime(2022, 4, 12, 10, 46, 1, 892, DateTimeKind.Local).AddTicks(7719),
                             ForecasterId = 1L,
                             Temperature = 11.199999999999999
                         },
@@ -112,7 +112,7 @@ namespace OnboardingWeatherAPI.Migrations
                         {
                             Id = 3L,
                             CityId = 2L,
-                            Date = new DateTime(2022, 4, 13, 10, 35, 33, 190, DateTimeKind.Local).AddTicks(9408),
+                            Date = new DateTime(2022, 4, 13, 10, 46, 1, 892, DateTimeKind.Local).AddTicks(7721),
                             ForecasterId = 1L,
                             Temperature = 10.199999999999999
                         });
@@ -153,8 +153,9 @@ namespace OnboardingWeatherAPI.Migrations
                     b.Property<long>("CityId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("RssCode")
-                        .HasColumnType("bigint");
+                    b.Property<string>("RssCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -168,7 +169,7 @@ namespace OnboardingWeatherAPI.Migrations
                         {
                             Id = 1L,
                             CityId = 4L,
-                            RssCode = 611717L
+                            RssCode = "611717"
                         });
                 });
 

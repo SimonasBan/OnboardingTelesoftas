@@ -15,7 +15,7 @@ namespace OnboardingWeatherAPI.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RssCode = table.Column<long>(type: "bigint", nullable: false),
+                    RssCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CityId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
@@ -39,26 +39,26 @@ namespace OnboardingWeatherAPI.Migrations
                 keyColumn: "Id",
                 keyValue: 1L,
                 column: "Date",
-                value: new DateTime(2022, 4, 13, 10, 35, 33, 190, DateTimeKind.Local).AddTicks(9374));
+                value: new DateTime(2022, 4, 13, 10, 46, 1, 892, DateTimeKind.Local).AddTicks(7685));
 
             migrationBuilder.UpdateData(
                 table: "FactualWeatherPredictions",
                 keyColumn: "Id",
                 keyValue: 2L,
                 column: "Date",
-                value: new DateTime(2022, 4, 12, 10, 35, 33, 190, DateTimeKind.Local).AddTicks(9406));
+                value: new DateTime(2022, 4, 12, 10, 46, 1, 892, DateTimeKind.Local).AddTicks(7719));
 
             migrationBuilder.UpdateData(
                 table: "FactualWeatherPredictions",
                 keyColumn: "Id",
                 keyValue: 3L,
                 column: "Date",
-                value: new DateTime(2022, 4, 13, 10, 35, 33, 190, DateTimeKind.Local).AddTicks(9408));
+                value: new DateTime(2022, 4, 13, 10, 46, 1, 892, DateTimeKind.Local).AddTicks(7721));
 
             migrationBuilder.InsertData(
                 table: "BbcForecasterData",
                 columns: new[] { "Id", "CityId", "RssCode" },
-                values: new object[] { 1L, 4L, 611717L });
+                values: new object[] { 1L, 4L, "611717" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_BbcForecasterData_CityId",
