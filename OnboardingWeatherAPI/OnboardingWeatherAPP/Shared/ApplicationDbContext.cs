@@ -13,6 +13,7 @@ namespace OnboardingWeatherAPI.Models.Shared
         }
         public DbSet<City> Cities { get; set; }
         public DbSet<Forecaster> Forecasters { get; set; }
+        public DbSet<CityForecaster> CityForecasters { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

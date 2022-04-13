@@ -11,7 +11,7 @@ using OnboardingWeatherAPI.Models.Shared;
 namespace OnboardingWeatherAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220413125041_add-forecaster-and-cityForecaster")]
+    [Migration("20220413125324_add-forecaster-and-cityForecaster")]
     partial class addforecasterandcityForecaster
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
