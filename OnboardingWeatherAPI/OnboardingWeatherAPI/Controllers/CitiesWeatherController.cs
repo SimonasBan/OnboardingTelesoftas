@@ -25,7 +25,6 @@ namespace OnboardingWeatherAPI.Controllers
             _openWeatherWeatherService = openWeatherWeatherService;
         }
 
-        //Get a list of available cities;    ---    GET /cities
         [HttpGet("GetCurrentWeatherAsyncTest")]
         public async Task<string?> GetCurrentWeatherAsyncTest()
         {
@@ -53,6 +52,26 @@ namespace OnboardingWeatherAPI.Controllers
         //    //    (e => e.Name).ToListAsync();
         //}
 
+        [HttpGet("fill-City-Forecaster")]
+        public bool FillCityForecaster()
+        {
+            //Define many to many
+            var kaunasFromDb = _context.Cities
+                .Where(x => x.Name == "Kaunas").First();
+
+            var openWeatherFromDb = _context.Forecasters
+                .Where(x => x.Name == "OpenWeather").First();
+
+            //TODO: Throws an error
+            _context.CityForecasters.Add(new CityForecaster {
+                City = kaunasFromDb,
+                Forecaster = openWeatherFromDb,
+                AcceessItem = "test"
+            });
+            _context.SaveChanges();
+            return true;
+        }
+
         [HttpGet("fill-db")]
         public bool FillDatabase()
         {
@@ -76,16 +95,7 @@ namespace OnboardingWeatherAPI.Controllers
             });
             _context.SaveChanges();
 
-            //Define many to many
-            var kaunasFromDb = _context.Cities
-                .Where(x => x.Name == "Kaunas").First();
-
-            var openWeatherFromDb = _context.Forecasters
-                .Where(x => x.Name == "OpenWeather").First();
-
-            //TODO: Throws an error
-            _context.CityForecasters.Add(new CityForecaster { CityId = kaunasFromDb.Id, ForecasterId = openWeatherFromDb.Id });
-            _context.SaveChanges();
+            
 
 
             ////BbcForecasterData
