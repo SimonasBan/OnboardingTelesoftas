@@ -43,17 +43,50 @@ namespace OnboardingWeatherAPI.Controllers
             //    (e => e.Name).ToListAsync();
         }
 
-        //[HttpGet("testRss")]
-        //public double TestRss()
-        //{
-        //    var res = _forecastService.GetCurrentWeatherByCity(_context.Cities.Find((long)4));
-        //    return res;
-        //    //return await _context.Cities.Select
-        //    //    (e => e.Name).ToListAsync();
-        //}
+        [HttpGet("test-get-factual-prediction-from-city")]
+        public bool TestGetFactualPredictionFromCity()
+        {
+            var kaunasFromDb = _context.Cities
+                .Include(e => e.FactualPredictions)
+                .Where(x => x.Name == "Kaunas").First();
 
-        [HttpGet("fill-City-Forecaster")]
-        public bool FillCityForecaster()
+            return true;
+        }
+
+        [HttpGet("test-add-factual-prediction")]
+        public bool TestAddFactualPrediction()
+        {
+            var kaunasFromDb = _context.Cities
+                .Where(x => x.Name == "Kaunas").First();
+
+            var facturalPrediction = new FactualWeatherPrediction
+                {
+                    City = kaunasFromDb,
+                    Date = DateTime.Now,
+                    Temperature = 21.5,
+                };
+
+            _context.FactualPredictions.Add(facturalPrediction);
+            _context.SaveChanges();
+
+            return true;
+        }
+
+
+        [HttpGet("test-get-City-Forecaster")]
+        public bool TestGetCityForecaster()
+        {
+            //TODO: cityForecaster navigation tables are null
+            var cityForecaster = _context.CityForecasters
+                .Include(e => e.City)
+                .Include(e => e.Forecaster)
+                .FirstOrDefault();
+
+            return true;
+        }
+
+        [HttpGet("test-fill-City-Forecaster")]
+        public bool TestFillCityForecaster()
         {
             //Define many to many
             var kaunasFromDb = _context.Cities

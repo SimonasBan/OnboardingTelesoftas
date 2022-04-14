@@ -14,6 +14,7 @@ namespace OnboardingWeatherAPI.Models.Shared
         public DbSet<City> Cities { get; set; }
         public DbSet<Forecaster> Forecasters { get; set; }
         public DbSet<CityForecaster> CityForecasters { get; set; }
+        public DbSet<FactualWeatherPrediction> FactualPredictions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,6 +30,11 @@ namespace OnboardingWeatherAPI.Models.Shared
                 .HasOne(pt => pt.Forecaster)
                 .WithMany(t => t.CityForecasters)
                 .HasForeignKey(pt => pt.ForecasterId);
+            //--------
+            modelBuilder.Entity<FactualWeatherPrediction>()
+                .HasOne(e => e.City)
+                .WithMany(e => e.FactualPredictions)
+                .HasForeignKey(e => e.CityId);
         }
     }
 
