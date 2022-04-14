@@ -23,7 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OnboardingWeatherAPP\OnboardingWeather.Aplication.csproj" />
     <ProjectReference Include="..\OnboardingWeatherDOMAIN\OnboardingWeatherDOMAIN.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

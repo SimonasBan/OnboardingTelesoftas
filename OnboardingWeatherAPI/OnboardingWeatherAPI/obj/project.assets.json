@@ -580,6 +580,15 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/6.2.3": {
         "type": "package",
         "dependencies": {
@@ -920,6 +929,31 @@
             "rid": "win"
           }
         }
+      },
+      "OnboardingWeather.Aplication/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.3",
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "6.0.3",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.3",
+          "Microsoft.EntityFrameworkCore": "6.0.3",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.3",
+          "Microsoft.Identity.Web": "1.16.0",
+          "Newtonsoft.Json": "13.0.1",
+          "OnboardingWeatherDOMAIN": "1.0.0",
+          "Swashbuckle.AspNetCore": "6.2.3",
+          "System.Configuration.ConfigurationManager": "6.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OnboardingWeather.Aplication.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OnboardingWeather.Aplication.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "OnboardingWeatherDOMAIN/1.0.0": {
         "type": "project",
@@ -1879,6 +1913,33 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.2.3": {
       "sha512": "cnzQDn0Le+hInsw2SYwlOhOCPXpYi/szcvnyqZJ12v+QyrLBwAmWXBg6RIyHB18s/mLeywC+Rg2O9ndz0IUNYQ==",
       "type": "package",
@@ -2604,6 +2665,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "OnboardingWeather.Aplication/1.0.0": {
+      "type": "project",
+      "path": "../OnboardingWeatherAPP/OnboardingWeather.Aplication.csproj",
+      "msbuildProject": "../OnboardingWeatherAPP/OnboardingWeather.Aplication.csproj"
+    },
     "OnboardingWeatherDOMAIN/1.0.0": {
       "type": "project",
       "path": "../OnboardingWeatherDOMAIN/OnboardingWeatherDOMAIN.csproj",
@@ -2619,6 +2685,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.3",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.3",
       "Microsoft.Identity.Web >= 1.16.0",
+      "OnboardingWeather.Aplication >= 1.0.0",
       "OnboardingWeatherDOMAIN >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "System.Configuration.ConfigurationManager >= 6.0.0"
@@ -2655,6 +2722,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPP\\OnboardingWeather.Aplication.csproj": {
+              "projectPath": "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherAPP\\OnboardingWeather.Aplication.csproj"
+            },
             "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherDOMAIN\\OnboardingWeatherDOMAIN.csproj": {
               "projectPath": "F:\\Projects\\Onboarding\\GIT\\README.md\\OnboardingTelesoftas\\OnboardingWeatherAPI\\OnboardingWeatherDOMAIN\\OnboardingWeatherDOMAIN.csproj"
             }

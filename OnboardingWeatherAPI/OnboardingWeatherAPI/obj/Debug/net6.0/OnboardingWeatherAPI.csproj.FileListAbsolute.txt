@@ -137,3 +137,9 @@ F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\O
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherDOMAIN.exe
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherDOMAIN.dll
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeatherDOMAIN.pdb
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeather.Aplication.deps.json
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeather.Aplication.runtimeconfig.json
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeather.Aplication.exe
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeather.Aplication.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\OnboardingWeather.Aplication.pdb
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
