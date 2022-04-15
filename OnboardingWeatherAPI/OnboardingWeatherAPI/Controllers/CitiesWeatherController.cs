@@ -97,37 +97,24 @@ namespace OnboardingWeatherAPI.Controllers
         }
 
 
-        [HttpGet("test-get-City-Forecaster")]
-        public bool TestGetCityForecaster()
-        {
-            //TODO: cityForecaster navigation tables are null
-            var cityForecaster = _context.CityForecasters
-                .Include(e => e.City)
-                .Include(e => e.Forecaster)
-                .FirstOrDefault();
+        //[HttpGet("test-fill-City-Forecaster")]
+        //public bool TestFillCityForecaster()
+        //{
+        //    //Define many to many
+        //    var kaunasFromDb = _context.Cities
+        //        .Where(x => x.Name == "Kaunas").First();
 
-            return true;
-        }
+        //    var openWeatherFromDb = _context.Forecasters
+        //        .Where(x => x.Name == "OpenWeather").First();
 
-        [HttpGet("test-fill-City-Forecaster")]
-        public bool TestFillCityForecaster()
-        {
-            //Define many to many
-            var kaunasFromDb = _context.Cities
-                .Where(x => x.Name == "Kaunas").First();
-
-            var openWeatherFromDb = _context.Forecasters
-                .Where(x => x.Name == "OpenWeather").First();
-
-            //TODO: Throws an error
-            _context.CityForecasters.Add(new CityForecaster {
-                City = kaunasFromDb,
-                Forecaster = openWeatherFromDb,
-                AcceessItem = "test"
-            });
-            _context.SaveChanges();
-            return true;
-        }
+        //    _context.CityForecasters.Add(new CityForecaster {
+        //        City = kaunasFromDb,
+        //        Forecaster = openWeatherFromDb,
+        //        AcceessItem = "test"
+        //    });
+        //    _context.SaveChanges();
+        //    return true;
+        //}
 
         [HttpGet("fill-db")]
         public bool FillDatabase()

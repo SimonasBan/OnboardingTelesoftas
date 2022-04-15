@@ -32,7 +32,6 @@ namespace OnboardingWeatherAPI.Services
                 return false;
             }
 
-            //TODO: left here
             var cityCode = city.CityForecasters
                 .Where(e => e.Forecaster.Name == "OpenWeather")
                 .Select(e => e.AcceessItem)
