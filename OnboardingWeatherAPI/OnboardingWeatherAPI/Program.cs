@@ -1,15 +1,10 @@
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using OnboardingWeatherAPI.Models.Shared;
-using OnboardingWeatherAPI.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Configuration;
 using OnboardingWeatherAPI.Services;
 using OnboardingWeather.Aplication.Services;
 using OnboardingWeather.Aplication.Services.Fetcher;
-using OnboardingWeather.Aplication.Services.Extensions;
-using ikvm.runtime;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,9 +17,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseSq);
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -36,11 +28,18 @@ builder.Services.AddHttpClient("OpenWeather", httpClient =>
 
 
 builder.Services.AddScoped<CityWeatherService>();
-//builder.Services.AddScoped<OpenWeatherWeatherService>();
+builder.Services.AddScoped<OpenWeatherWeatherService>();
 builder.Services.AddScoped<CityService>();
 builder.Services.AddHostedService<ConsumeScopedServiceHostedService>();
 builder.Services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
-builder.Services.RegisterAllTypes<IWeatherForecastService>(new[] { typeof(Startup).Assembly });
+
+//FOR multiple dependency injection
+builder.Services.Scan(scan => scan
+              .FromAssemblyOf<IWeatherForecastService>()
+                .AddClasses(classes => classes.AssignableTo<IWeatherForecastService>())
+                    .AsImplementedInterfaces()
+                    .WithTransientLifetime()
+            );
 
 var app = builder.Build();
 
@@ -53,15 +52,6 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
 }
-
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
-
-//    var context = services.GetRequiredService<ApplicationDbContext>();
-//    context.Database.EnsureCreated();
-//    // DbInitializer.Initialize(context);
-//}
 
 app.UseHttpsRedirection();
 

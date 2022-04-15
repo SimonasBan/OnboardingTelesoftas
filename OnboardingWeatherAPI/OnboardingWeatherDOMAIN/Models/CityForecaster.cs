@@ -6,7 +6,7 @@ namespace OnboardingWeatherDOMAIN.Models
 {
     public class CityForecaster
     {
-        //TODO:---- Think about how more cities or more forecasters can be added
+        //TODO: Think about how more cities or more forecasters can be added
         /*Ideas:
          * form,
          * Add a file with cities

@@ -67,9 +67,9 @@ namespace OnboardingWeatherAPI.Services
             };
 
             _context.FactualPredictions.Add(factualPrediction);
-            await _context.SaveChangesAsync();     
-            
-            //TODO: return only factual prediction and higher service adds to db
+            await _context.SaveChangesAsync();
+
+        //TODO: return only factual prediction and higher service adds to db
             return true;
         }
     }

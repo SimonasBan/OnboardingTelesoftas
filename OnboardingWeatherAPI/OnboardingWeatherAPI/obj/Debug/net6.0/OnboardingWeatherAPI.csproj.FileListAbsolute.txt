@@ -171,3 +171,5 @@ F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\O
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\IKVM.OpenJDK.XML.XPath.dll
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\IKVM.Runtime.JNI.dll
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\IKVM.Runtime.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Scrutor.dll
