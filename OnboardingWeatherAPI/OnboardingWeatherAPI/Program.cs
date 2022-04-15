@@ -8,6 +8,8 @@ using System.Configuration;
 using OnboardingWeatherAPI.Services;
 using OnboardingWeather.Aplication.Services;
 using OnboardingWeather.Aplication.Services.Fetcher;
+using OnboardingWeather.Aplication.Services.Extensions;
+using ikvm.runtime;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,14 +31,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
-
-
 builder.Services.AddScoped<CityWeatherService>();
-builder.Services.AddScoped<OpenWeatherWeatherService>();
-
+//builder.Services.AddScoped<OpenWeatherWeatherService>();
 builder.Services.AddHostedService<ConsumeScopedServiceHostedService>();
 builder.Services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
-//builder.Services.AddHostedService<FetchForecastHostedService>();
+builder.Services.RegisterAllTypes<IWeatherForecastService>(new[] { typeof(Startup).Assembly });
 
 var app = builder.Build();
 

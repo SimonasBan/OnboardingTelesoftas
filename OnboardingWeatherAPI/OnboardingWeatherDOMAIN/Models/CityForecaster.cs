@@ -6,6 +6,9 @@ namespace OnboardingWeatherDOMAIN.Models
 {
     public class CityForecaster
     {
+        //TODO: Think about addin more items
+
+        //TODO: providerCityId
         public string AcceessItem { get; set; }
 
         public long CityId { get; set; }

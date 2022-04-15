@@ -9,25 +9,40 @@ namespace OnboardingWeather.Aplication.Services.Fetcher
 
     public class ScopedProcessingService : IScopedProcessingService
     {
-        private int executionCount = 0;
-        private readonly OpenWeatherWeatherService _openWeatherService;
+        //private readonly int Delay = 90000000;
+        private readonly int Delay = 2000;
+        //private readonly OpenWeatherWeatherService _openWeatherService;
 
-        public ScopedProcessingService(OpenWeatherWeatherService openWeatherService)
+        //TODO: list inject. Then iterate.
+        private readonly IEnumerable<IWeatherForecastService> _weatherServices;
+
+        public ScopedProcessingService(/*OpenWeatherWeatherService openWeatherService,*/ IEnumerable<IWeatherForecastService> weatherServices)
         {
-            _openWeatherService = openWeatherService;
+            //_openWeatherService = openWeatherService;
+            _weatherServices = weatherServices;
         }
 
         public async Task DoWork(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                executionCount++;
+                await Task.Delay(Delay, stoppingToken);
 
-                var forecast = await _openWeatherService.GetCurrentWeatherAsync();
-                var forecastTemp = (string)forecast["main"]["temp"];
-                Console.WriteLine($"Test Hosted service. Temperature {forecastTemp}");
+                //TODO: implement for different services. With interface
+                //
 
-                await Task.Delay(2000, stoppingToken);
+                
+                foreach (var service in _weatherServices)
+                {
+                    Console.WriteLine("Test");
+                    //await service.GetCurrentWeatherForCity();
+                }
+                Console.WriteLine("---");
+                //var forecast = await _openWeatherService.GetCurrentWeatherForCity();
+                //var forecastTemp = (string)forecast["main"]["temp"];
+                //Console.WriteLine($"Test Hosted service. Temperature {forecastTemp}");
+
+
             }
         }
     }

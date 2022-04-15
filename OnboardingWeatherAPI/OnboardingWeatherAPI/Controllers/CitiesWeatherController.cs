@@ -5,6 +5,7 @@ using OnboardingWeatherAPI.Models;
 using OnboardingWeatherAPI.Models.Shared;
 using OnboardingWeatherAPI.Services;
 using OnboardingWeatherDOMAIN.Models;
+using System.Text;
 //using OnboardingWeatherDOMAIN.Models;
 
 namespace OnboardingWeatherAPI.Controllers
@@ -16,21 +17,35 @@ namespace OnboardingWeatherAPI.Controllers
         //injection in startup
         private readonly ApplicationDbContext _context;
         private readonly CityWeatherService _cityWeather;
-        private readonly OpenWeatherWeatherService _openWeatherWeatherService;
-        public CitiesWeatherController(ApplicationDbContext context, CityWeatherService cityWeather,
-            OpenWeatherWeatherService openWeatherWeatherService)
+        //private readonly OpenWeatherWeatherService _openWeatherWeatherService;
+        private readonly IEnumerable<IWeatherForecastService> _weatherServices;
+        public CitiesWeatherController(ApplicationDbContext context, CityWeatherService cityWeather
+            , IEnumerable<IWeatherForecastService> weatherServices
+            /*,OpenWeatherWeatherService openWeatherWeatherService*/)
         {
             _context = context;
             _cityWeather = cityWeather;
-            _openWeatherWeatherService = openWeatherWeatherService;
+            _weatherServices = weatherServices;
+            //_openWeatherWeatherService = openWeatherWeatherService;
         }
 
-        [HttpGet("GetCurrentWeatherAsyncTest")]
-        public async Task<string?> GetCurrentWeatherAsyncTest()
+        [HttpGet("test-multi-DI")]
+        public string TestMultiDI()
         {
-            var res = await _openWeatherWeatherService.GetCurrentWeatherAsync();
-            return (string)res["main"]["temp"];
+            var builder = new StringBuilder();
+            foreach (var service in _weatherServices)
+            {
+                builder.AppendLine($"{service.GetCurrentWeatherForCity()}");
+            }
+            return builder.ToString();
         }
+
+        //[HttpGet("GetCurrentWeatherAsyncTest")]
+        //public async Task<string?> GetCurrentWeatherAsyncTest()
+        //{
+        //    var res = await _openWeatherWeatherService.GetCurrentWeatherForCity();
+        //    return (string)res["main"]["temp"];
+        //}
 
 
 
