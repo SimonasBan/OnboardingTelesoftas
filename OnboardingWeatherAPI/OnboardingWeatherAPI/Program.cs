@@ -40,7 +40,15 @@ builder.Services.AddScoped<CityWeatherService>();
 builder.Services.AddScoped<CityService>();
 builder.Services.AddHostedService<ConsumeScopedServiceHostedService>();
 builder.Services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
-builder.Services.RegisterAllTypes<IWeatherForecastService>(new[] { typeof(Startup).Assembly });
+
+//FOR multiple dependency injection
+builder.Services.Scan(scan => scan
+              .FromAssemblyOf<IWeatherForecastService>()
+                .AddClasses(classes => classes.AssignableTo<IWeatherForecastService>())
+                    .AsImplementedInterfaces()
+                    .WithTransientLifetime()
+            );
+//builder.Services.RegisterAllTypes<IWeatherForecastService>(new[] { typeof(Startup).Assembly });
 
 var app = builder.Build();
 

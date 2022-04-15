@@ -39,9 +39,10 @@ namespace OnboardingWeather.Aplication.Services.Fetcher
                     foreach (var service in _weatherServices)
                     {                     
 
-                        Console.WriteLine("Test");
+                        Console.WriteLine("Service");
                         foreach (var cityId in citiesIds)
                         {
+                            Console.WriteLine("---and_city");
                             await service.AddTodaysFactualWeatherForCity(cityId);
                         }
                     }
@@ -49,9 +50,6 @@ namespace OnboardingWeather.Aplication.Services.Fetcher
 
 
                 Console.WriteLine("---");
-                //var forecast = await _openWeatherService.GetCurrentWeatherForCity();
-                //var forecastTemp = (string)forecast["main"]["temp"];
-                //Console.WriteLine($"Test Hosted service. Temperature {forecastTemp}");
                 
 
             }
