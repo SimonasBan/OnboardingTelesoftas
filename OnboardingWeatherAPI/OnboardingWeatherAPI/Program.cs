@@ -29,6 +29,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddHttpClient("OpenWeather", httpClient =>
+{
+    httpClient.BaseAddress = new Uri("https://api.openweathermap.org/data/");
+});
 
 
 builder.Services.AddScoped<CityWeatherService>();

@@ -10,12 +10,16 @@ namespace OnboardingWeatherAPI.Services
     public class OpenWeatherWeatherService : IWeatherForecastService
     //: IWeatherForecastService
     {
-        //TODO: to appsettings
-        private const string ApiKey = "c5f241ad2670a83cc3b38551c15cbd4f";
+        private readonly IConfiguration Configuration;
         private readonly ApplicationDbContext _context;
-        public OpenWeatherWeatherService(ApplicationDbContext context)
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public OpenWeatherWeatherService(ApplicationDbContext context, IHttpClientFactory httpClientFactory
+            , IConfiguration configuration)
         {
             _context = context;
+            _httpClientFactory = httpClientFactory;
+            Configuration = configuration;
         }
         public async Task<bool> UpdateCurrentFactualWeatherForCity(long cityId)
         {
@@ -36,19 +40,13 @@ namespace OnboardingWeatherAPI.Services
                 .Where(e => e.Forecaster.Name == "OpenWeather")
                 .Select(e => e.AcceessItem)
                 .FirstOrDefault();
+            //-----client part----
 
+            var apiKey = Configuration["OpenWeatherAPI:ApiKey"];
+            var apiVersion = Configuration["OpenWeatherAPI:Version"];
 
-            var url = $"https://api.openweathermap.org/data/2.5/weather?q={cityCode}&appid={ApiKey}";
-
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri(url)
-            };
-
-            //TODO: move client to a service. Factory with api base, key etc. HTTPClient factory.
-            HttpClient client = new HttpClient();
-            var response = await client.SendAsync(request).ConfigureAwait(false);
+            var httpClient = _httpClientFactory.CreateClient("OpenWeather");
+            var response = await httpClient.GetAsync($"{apiVersion}/weather?q={cityCode}&appid={apiKey}");
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
