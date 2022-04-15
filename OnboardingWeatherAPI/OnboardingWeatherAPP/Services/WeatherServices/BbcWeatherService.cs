@@ -15,10 +15,10 @@ namespace OnboardingWeather.Aplication.Services
 
         public async Task<bool> AddTodaysFactualWeatherForCity(long cityId)
         {
-            //var city = await _context.Cities
-            //    .Include(e => e.CityForecasters)
-            //    .Where(x => x.Id == cityId)
-            //    .FirstOrDefaultAsync();
+            var city = await _context.Cities
+                .Include(e => e.CityForecasters)
+                .Where(x => x.Id == cityId)
+                .FirstOrDefaultAsync();
 
             Console.WriteLine("BbcWeather service action");
             return false;
