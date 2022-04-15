@@ -5,6 +5,7 @@ using OnboardingWeatherAPI.Models;
 using OnboardingWeatherAPI.Models.Shared;
 using OnboardingWeatherAPI.Services;
 using OnboardingWeatherDOMAIN.Models;
+using System.Text;
 //using OnboardingWeatherDOMAIN.Models;
 
 namespace OnboardingWeatherAPI.Controllers
@@ -16,21 +17,44 @@ namespace OnboardingWeatherAPI.Controllers
         //injection in startup
         private readonly ApplicationDbContext _context;
         private readonly CityWeatherService _cityWeather;
-        private readonly OpenWeatherWeatherService _openWeatherWeatherService;
-        public CitiesWeatherController(ApplicationDbContext context, CityWeatherService cityWeather,
-            OpenWeatherWeatherService openWeatherWeatherService)
+        private readonly OpenWeatherWeatherService _openWeather;
+        //private readonly OpenWeatherWeatherService _openWeatherWeatherService;
+        private readonly IEnumerable<IWeatherForecastService> _weatherServices;
+        public CitiesWeatherController(ApplicationDbContext context, CityWeatherService cityWeather
+            , IEnumerable<IWeatherForecastService> weatherServices
+            , OpenWeatherWeatherService openWeather
+            /*,OpenWeatherWeatherService openWeatherWeatherService*/)
         {
             _context = context;
             _cityWeather = cityWeather;
-            _openWeatherWeatherService = openWeatherWeatherService;
+            _weatherServices = weatherServices;
+            _openWeather = openWeather;
+            //_openWeatherWeatherService = openWeatherWeatherService;
         }
 
-        [HttpGet("GetCurrentWeatherAsyncTest")]
-        public async Task<string?> GetCurrentWeatherAsyncTest()
+        [HttpGet("test-factual-weather-update")]
+        public async Task<bool> TestFactualWeatherUpdate()
         {
-            var res = await _openWeatherWeatherService.GetCurrentWeatherAsync();
-            return (string)res["main"]["temp"];
+            return await _openWeather.UpdateCurrentFactualWeatherForCity(1);
         }
+
+        //[HttpGet("test-multi-DI")]
+        //public string TestMultiDI()
+        //{
+        //    var builder = new StringBuilder();
+        //    foreach (var service in _weatherServices)
+        //    {
+        //        builder.AppendLine($"{service.GetCurrentWeatherForCity()}");
+        //    }
+        //    return builder.ToString();
+        //}
+
+        //[HttpGet("GetCurrentWeatherAsyncTest")]
+        //public async Task<string?> GetCurrentWeatherAsyncTest()
+        //{
+        //    var res = await _openWeatherWeatherService.GetCurrentWeatherForCity();
+        //    return (string)res["main"]["temp"];
+        //}
 
 
 
@@ -73,37 +97,24 @@ namespace OnboardingWeatherAPI.Controllers
         }
 
 
-        [HttpGet("test-get-City-Forecaster")]
-        public bool TestGetCityForecaster()
-        {
-            //TODO: cityForecaster navigation tables are null
-            var cityForecaster = _context.CityForecasters
-                .Include(e => e.City)
-                .Include(e => e.Forecaster)
-                .FirstOrDefault();
+        //[HttpGet("test-fill-City-Forecaster")]
+        //public bool TestFillCityForecaster()
+        //{
+        //    //Define many to many
+        //    var kaunasFromDb = _context.Cities
+        //        .Where(x => x.Name == "Kaunas").First();
 
-            return true;
-        }
+        //    var openWeatherFromDb = _context.Forecasters
+        //        .Where(x => x.Name == "OpenWeather").First();
 
-        [HttpGet("test-fill-City-Forecaster")]
-        public bool TestFillCityForecaster()
-        {
-            //Define many to many
-            var kaunasFromDb = _context.Cities
-                .Where(x => x.Name == "Kaunas").First();
-
-            var openWeatherFromDb = _context.Forecasters
-                .Where(x => x.Name == "OpenWeather").First();
-
-            //TODO: Throws an error
-            _context.CityForecasters.Add(new CityForecaster {
-                City = kaunasFromDb,
-                Forecaster = openWeatherFromDb,
-                AcceessItem = "test"
-            });
-            _context.SaveChanges();
-            return true;
-        }
+        //    _context.CityForecasters.Add(new CityForecaster {
+        //        City = kaunasFromDb,
+        //        Forecaster = openWeatherFromDb,
+        //        AcceessItem = "test"
+        //    });
+        //    _context.SaveChanges();
+        //    return true;
+        //}
 
         [HttpGet("fill-db")]
         public bool FillDatabase()
