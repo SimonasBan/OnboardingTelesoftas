@@ -32,10 +32,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
 builder.Services.AddScoped<CityWeatherService>();
-//builder.Services.AddScoped<OpenWeatherWeatherService>();
+builder.Services.AddScoped<OpenWeatherWeatherService>();
+builder.Services.AddScoped<CityService>();
 builder.Services.AddHostedService<ConsumeScopedServiceHostedService>();
 builder.Services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
-builder.Services.RegisterAllTypes<IWeatherForecastService>(new[] { typeof(Startup).Assembly });
+//TODO: not working multiple DI
+//builder.Services.RegisterAllTypes<IWeatherForecastService>(new[] { typeof(Startup).Assembly });
 
 var app = builder.Build();
 

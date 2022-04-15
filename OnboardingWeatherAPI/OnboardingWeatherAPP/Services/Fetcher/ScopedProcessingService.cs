@@ -11,14 +11,15 @@ namespace OnboardingWeather.Aplication.Services.Fetcher
     {
         //private readonly int Delay = 90000000;
         private readonly int Delay = 2000;
-        //private readonly OpenWeatherWeatherService _openWeatherService;
 
         //TODO: list inject. Then iterate.
+        private readonly CityService _cityService;
         private readonly IEnumerable<IWeatherForecastService> _weatherServices;
+        
 
-        public ScopedProcessingService(/*OpenWeatherWeatherService openWeatherService,*/ IEnumerable<IWeatherForecastService> weatherServices)
+        public ScopedProcessingService(CityService cityService, IEnumerable<IWeatherForecastService> weatherServices)
         {
-            //_openWeatherService = openWeatherService;
+            _cityService = cityService;
             _weatherServices = weatherServices;
         }
 
@@ -28,20 +29,30 @@ namespace OnboardingWeather.Aplication.Services.Fetcher
             {
                 await Task.Delay(Delay, stoppingToken);
 
-                //TODO: implement for different services. With interface
-                //
 
-                
-                foreach (var service in _weatherServices)
+                //Get cities ID's
+                var citiesIds = await _cityService.GetAllCitiesIds();
+
+                if (citiesIds != null)
                 {
-                    Console.WriteLine("Test");
-                    //await service.GetCurrentWeatherForCity();
+                    //TODO: implement for different services. With interface
+                    //
+                    foreach (var service in _weatherServices)
+                    {
+                        Console.WriteLine("Test");
+                        foreach (var cityId in citiesIds)
+                        {
+                            //await service.GetCurrentWeatherForCity(cityId);
+                        }
+                    }
                 }
+
+
                 Console.WriteLine("---");
                 //var forecast = await _openWeatherService.GetCurrentWeatherForCity();
                 //var forecastTemp = (string)forecast["main"]["temp"];
                 //Console.WriteLine($"Test Hosted service. Temperature {forecastTemp}");
-
+                
 
             }
         }
