@@ -35,7 +35,7 @@ namespace OnboardingWeatherAPI.Controllers
         [HttpGet("test-factual-weather-update")]
         public async Task<bool> TestFactualWeatherUpdate()
         {
-            return await _openWeather.UpdateCurrentFactualWeatherForCity(1);
+            return await _openWeather.AddTodaysFactualWeatherForCity(1);
         }
 
         //[HttpGet("test-multi-DI")]

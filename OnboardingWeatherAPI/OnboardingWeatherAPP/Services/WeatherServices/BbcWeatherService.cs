@@ -13,7 +13,7 @@ namespace OnboardingWeather.Aplication.Services
             _context = context;
         }
 
-        public async Task<bool> UpdateCurrentFactualWeatherForCity(long cityId)
+        public async Task<bool> AddTodaysFactualWeatherForCity(long cityId)
         {
             var city = await _context.Cities
                 .Include(e => e.CityForecasters)

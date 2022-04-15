@@ -21,7 +21,7 @@ namespace OnboardingWeatherAPI.Services
             _httpClientFactory = httpClientFactory;
             Configuration = configuration;
         }
-        public async Task<bool> UpdateCurrentFactualWeatherForCity(long cityId)
+        public async Task<bool> AddTodaysFactualWeatherForCity(long cityId)
         {
             Console.WriteLine("OpenWeather service action");
             //--------
@@ -30,6 +30,7 @@ namespace OnboardingWeatherAPI.Services
                     .ThenInclude(e => e.Forecaster)
                 .Where(x => x.Id == cityId)
                 .FirstOrDefaultAsync();
+            //TODO: search from CityForecasters with composite keys
 
             if (city.CityForecasters == null)
             {
@@ -52,6 +53,8 @@ namespace OnboardingWeatherAPI.Services
             {
                 return false;
             }
+
+            //TODO: response model to parse
             var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var responseJson = JObject.Parse(responseBody);
             var temperature = (double)responseJson["main"]["temp"];
@@ -60,12 +63,13 @@ namespace OnboardingWeatherAPI.Services
             {
                 Temperature = temperature,
                 City = city,
-                Date = DateTime.Now
+                Date = DateTime.UtcNow
             };
 
             _context.FactualPredictions.Add(factualPrediction);
             await _context.SaveChangesAsync();     
             
+            //TODO: return only factual prediction and higher service adds to db
             return true;
         }
     }

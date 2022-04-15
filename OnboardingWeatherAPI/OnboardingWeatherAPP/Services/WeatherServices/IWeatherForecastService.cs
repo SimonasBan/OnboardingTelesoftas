@@ -5,7 +5,7 @@ namespace OnboardingWeatherAPI.Services
 {
     public interface IWeatherForecastService
     {
-        Task<bool> UpdateCurrentFactualWeatherForCity(long cityId);
+        Task<bool> AddTodaysFactualWeatherForCity(long cityId);
         //string GetCurrentWeatherForCity(/*long cityId*/);
     }
 }

@@ -36,12 +36,11 @@ builder.Services.AddHttpClient("OpenWeather", httpClient =>
 
 
 builder.Services.AddScoped<CityWeatherService>();
-builder.Services.AddScoped<OpenWeatherWeatherService>();
+//builder.Services.AddScoped<OpenWeatherWeatherService>();
 builder.Services.AddScoped<CityService>();
 builder.Services.AddHostedService<ConsumeScopedServiceHostedService>();
 builder.Services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
-//TODO: not working multiple DI
-//builder.Services.RegisterAllTypes<IWeatherForecastService>(new[] { typeof(Startup).Assembly });
+builder.Services.RegisterAllTypes<IWeatherForecastService>(new[] { typeof(Startup).Assembly });
 
 var app = builder.Build();
 
