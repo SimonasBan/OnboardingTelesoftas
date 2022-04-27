@@ -29,6 +29,7 @@ namespace OnboardingWeatherAPI.Controllers
             _openWeather = openWeather;
         }
 
+        //2022-04-27
 
         //Get a list of average factual (combined from all third party data in a city) temperature for a given date range by day;
         //---    GET /cities/1/factualTemperatures?from-date=N&to-date=N
@@ -36,17 +37,22 @@ namespace OnboardingWeatherAPI.Controllers
         public async Task<double> GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] string fromDate, [FromQuery] string toDate)
         {
             var servicesFactualTemperatures = new List<List<FactualWeatherPrediction>?>();
+            DateTime fromDateTime = DateTime.Parse(fromDate);
+            DateTime toDateTime = DateTime.Parse(toDate);
 
             foreach (var service in _weatherServices)
             {
-                var factualTemperatures = await service.GetFactualTemperaturesForCityByDate(id);
+                var factualTemperatures = await service.GetFactualTemperaturesForCityByDate(id, fromDateTime, toDateTime);
                 servicesFactualTemperatures.Add(factualTemperatures);
             }
 
-            //servicesTemperatures.Ave
+            var averageTemperatureModel = _cityWeather.GetAverageTemperaturesFromFactualForecasts(servicesFactualTemperatures,
+                fromDateTime, toDateTime);
 
             return 2;
         }
+
+        
 
 
         [HttpGet("test-factual-weather-update")]
