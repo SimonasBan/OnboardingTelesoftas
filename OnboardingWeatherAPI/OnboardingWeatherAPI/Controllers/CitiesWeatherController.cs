@@ -6,6 +6,7 @@ using OnboardingWeatherAPI.Models.Shared;
 using OnboardingWeatherAPI.Services;
 using OnboardingWeatherDOMAIN.Models;
 using System.Text;
+using static OnboardingWeatherAPI.Services.CityWeatherService;
 //using OnboardingWeatherDOMAIN.Models;
 
 namespace OnboardingWeatherAPI.Controllers
@@ -34,7 +35,7 @@ namespace OnboardingWeatherAPI.Controllers
         //Get a list of average factual (combined from all third party data in a city) temperature for a given date range by day;
         //---    GET /cities/1/factualTemperatures?from-date=N&to-date=N
         [HttpGet("{id}/factual-temperatures")]
-        public async Task<double> GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] string fromDate, [FromQuery] string toDate)
+        public async Task<ActionResult<IEnumerable<TemperatureModel>>> GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] string fromDate, [FromQuery] string toDate)
         {
             var servicesFactualTemperatures = new List<List<FactualWeatherPrediction>?>();
             DateTime fromDateTime = DateTime.Parse(fromDate);
@@ -49,7 +50,7 @@ namespace OnboardingWeatherAPI.Controllers
             var averageTemperatureModel = _cityWeather.GetAverageTemperaturesFromFactualForecasts(servicesFactualTemperatures,
                 fromDateTime, toDateTime);
 
-            return 2;
+            return averageTemperatureModel;
         }
 
         
