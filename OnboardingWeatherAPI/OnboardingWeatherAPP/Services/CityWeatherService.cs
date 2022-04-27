@@ -21,7 +21,7 @@ namespace OnboardingWeatherAPI.Services
             return availableCitiesNames;
         }
 
-        public List<TemperatureModel> GetAverageTemperaturesFromFactualForecasts(List<List<FactualWeatherPrediction?>> factualPredictions, DateTime fromDate, DateTime toDate)
+        public List<TemperatureModel> GetAverageTemperaturesFromFactualForecasts(List<List<FactualWeatherPrediction>?> factualPredictions, DateTime fromDate, DateTime toDate)
         {
             var temperatureModels = new List<TemperatureModel>();
 

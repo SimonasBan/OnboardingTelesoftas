@@ -41,6 +41,11 @@ namespace OnboardingWeatherAPI.Controllers
             DateTime fromDateTime = DateTime.Parse(fromDate);
             DateTime toDateTime = DateTime.Parse(toDate);
 
+            if (fromDateTime > toDateTime)
+            {
+                return BadRequest("To date can not be bigger than from date");
+            }
+
             foreach (var service in _weatherServices)
             {
                 var factualTemperatures = await service.GetFactualTemperaturesForCityByDate(id, fromDateTime, toDateTime);
