@@ -76,7 +76,9 @@ namespace OnboardingWeatherAPI.Services
         public async Task<List<FactualWeatherPrediction>?> GetFactualTemperaturesForCityByDate(long cityId)
         {
             return await _context.FactualPredictions
+                .Include(e => e.Forecaster)
                 .Where(e => e.CityId == cityId)
+                .Where(e => e.Forecaster.Name == "OpenWeather")
                 .ToListAsync();
         }
     }

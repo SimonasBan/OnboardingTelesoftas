@@ -27,14 +27,11 @@ namespace OnboardingWeather.Aplication.Services
 
         public async Task<List<FactualWeatherPrediction>?> GetFactualTemperaturesForCityByDate(long cityId)
         {
-            //Not implemented
-            var forTestingAwait = await _context.FactualPredictions.ToListAsync();
-
-            //var temps = new List<double>();
-
-            //temps.Add(1);
-
-            return forTestingAwait;
+            return await _context.FactualPredictions
+                .Include(e => e.Forecaster)
+                .Where(e => e.CityId == cityId)
+                .Where(e => e.Forecaster.Name == "BBC")
+                .ToListAsync();
         }
     }
 }
