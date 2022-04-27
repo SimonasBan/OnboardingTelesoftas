@@ -72,5 +72,13 @@ namespace OnboardingWeatherAPI.Services
         //TODO: return only factual prediction and higher service adds to db
             return true;
         }
+
+        public async Task<List<double>?> GetFactualTemperaturesForCityByDate(long cityId)
+        {
+            return await _context.FactualPredictions
+                .Where(e => e.CityId == cityId)
+                .Select(e => e.Temperature)
+                .ToListAsync();
+        }
     }
 }

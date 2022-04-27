@@ -6,5 +6,6 @@ namespace OnboardingWeatherAPI.Services
     public interface IWeatherForecastService
     {
         Task<bool> AddTodaysFactualWeatherForCity(long cityId);
+        Task<List<double>?> GetFactualTemperaturesForCityByDate(long cityId);
     }
 }

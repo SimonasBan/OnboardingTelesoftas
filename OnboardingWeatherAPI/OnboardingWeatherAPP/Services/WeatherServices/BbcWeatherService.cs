@@ -23,5 +23,17 @@ namespace OnboardingWeather.Aplication.Services
             Console.WriteLine("BbcWeather service action");
             return false;
         }
+
+        public async Task<List<double>?> GetFactualTemperaturesForCityByDate(long cityId)
+        {
+            //Not implemented
+            var forTestingAwait = await _context.Cities.ToListAsync();
+
+            var temps = new List<double>();
+
+            temps.Add(1);
+
+            return temps;
+        }
     }
 }

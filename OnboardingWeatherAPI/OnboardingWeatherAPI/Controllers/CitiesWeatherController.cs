@@ -18,19 +18,30 @@ namespace OnboardingWeatherAPI.Controllers
         private readonly ApplicationDbContext _context;
         private readonly CityWeatherService _cityWeather;
         private readonly OpenWeatherWeatherService _openWeather;
-        //private readonly OpenWeatherWeatherService _openWeatherWeatherService;
         private readonly IEnumerable<IWeatherForecastService> _weatherServices;
         public CitiesWeatherController(ApplicationDbContext context, CityWeatherService cityWeather
             , IEnumerable<IWeatherForecastService> weatherServices
-            , OpenWeatherWeatherService openWeather
-            /*,OpenWeatherWeatherService openWeatherWeatherService*/)
+            , OpenWeatherWeatherService openWeather)
         {
             _context = context;
             _cityWeather = cityWeather;
             _weatherServices = weatherServices;
             _openWeather = openWeather;
-            //_openWeatherWeatherService = openWeatherWeatherService;
         }
+
+
+        //Get a list of average factual (combined from all third party data in a city) temperature for a given date range by day;
+        //---    GET /cities/1/factualTemperatures?from-date=N&to-date=N
+        [HttpGet("{id}/factual-temperatures")]
+        public async Task<string> GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] string fromDate, [FromQuery] string toDate)
+        {
+            foreach (var service in _weatherServices)
+            {
+                var temps = await service.GetFactualTemperaturesForCityByDate(id);
+            }
+            return $"From {fromDate}, to {toDate}";
+        }
+
 
         [HttpGet("test-factual-weather-update")]
         public async Task<bool> TestFactualWeatherUpdate()
@@ -225,13 +236,6 @@ namespace OnboardingWeatherAPI.Controllers
         }
 
 
-        //Get a list of average factual (combined from all third party data in a city) temperature for a given date range by day;
-        //---    GET /cities/1/factualTemperatures?from-date=N&to-date=N
-        [HttpGet("{id}/factual-temperatures")]
-        public string GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] string fromDate,[FromQuery] string toDate)
-        {
-            return $"From {fromDate}, to {toDate}";
-        }
 
         //Get each forecaster’s stdev compared to factual temperature measurements for each day in a given date range in a city;
         //---    GET /cities/1/stedv?from-date=N&to-date=N
