@@ -30,6 +30,7 @@ builder.Services.AddHttpClient("OpenWeather", httpClient =>
 builder.Services.AddScoped<CityWeatherService>();
 builder.Services.AddScoped<OpenWeatherWeatherService>();
 builder.Services.AddScoped<CityService>();
+builder.Services.AddScoped<AggregatorsService>();
 builder.Services.AddHostedService<ConsumeScopedServiceHostedService>();
 builder.Services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
 

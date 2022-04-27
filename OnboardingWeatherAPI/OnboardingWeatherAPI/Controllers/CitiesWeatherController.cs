@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OnboardingWeather.Aplication.Services;
 using OnboardingWeatherAPI.Models;
 using OnboardingWeatherAPI.Models.Shared;
 using OnboardingWeatherAPI.Services;
 using OnboardingWeatherDOMAIN.Models;
 using System.Text;
+using static OnboardingWeather.Aplication.Services.AggregatorsService;
 using static OnboardingWeatherAPI.Services.CityWeatherService;
 //using OnboardingWeatherDOMAIN.Models;
 
@@ -19,15 +21,17 @@ namespace OnboardingWeatherAPI.Controllers
         private readonly ApplicationDbContext _context;
         private readonly CityWeatherService _cityWeather;
         private readonly OpenWeatherWeatherService _openWeather;
+        private readonly AggregatorsService _aggregatorsService;
         private readonly IEnumerable<IWeatherForecastService> _weatherServices;
         public CitiesWeatherController(ApplicationDbContext context, CityWeatherService cityWeather
             , IEnumerable<IWeatherForecastService> weatherServices
-            , OpenWeatherWeatherService openWeather)
+            , OpenWeatherWeatherService openWeather, AggregatorsService aggregatorsService)
         {
             _context = context;
             _cityWeather = cityWeather;
             _weatherServices = weatherServices;
             _openWeather = openWeather;
+            _aggregatorsService = aggregatorsService;
         }
 
         //2022-04-27
@@ -39,24 +43,29 @@ namespace OnboardingWeatherAPI.Controllers
         public async Task<ActionResult<IEnumerable<TemperatureModel>>>
             GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] DateTime fromDateTime,
             [FromQuery] DateTime toDateTime)
-        {
-            var servicesFactualTemperatures = new List<List<FactualWeatherPrediction>?>();
-
+        {        
             if (fromDateTime > toDateTime)
             {
                 return BadRequest("To-date can not be bigger than from-date");
             }
-            //TODO: !!simplify to one service
-            foreach (var service in _weatherServices)
-            {
-                var factualTemperatures = await service.GetFactualTemperaturesForCityByDate(id, fromDateTime, toDateTime);
-                servicesFactualTemperatures.Add(factualTemperatures);
-            }
 
-            var averageTemperatureModel = _cityWeather.GetAverageTemperaturesFromFactualForecasts(servicesFactualTemperatures,
-                fromDateTime, toDateTime);
+            //var servicesFactualTemperatures = new List<List<FactualWeatherPrediction>?>();
 
-            return averageTemperatureModel;
+            var servicesFactualTemperatures = _aggregatorsService.GetTemperatureModelsForCityByDate(id, fromDateTime, toDateTime);
+            
+            return Ok(servicesFactualTemperatures);
+
+            ////TODO: !!simplify to one service
+            //foreach (var service in _weatherServices)
+            //{
+            //    var factualTemperatures = await service.GetFactualTemperaturesForCityByDate(id, fromDateTime, toDateTime);
+            //    servicesFactualTemperatures.Add(factualTemperatures);
+            //}
+
+            //var averageTemperatureModel = _cityWeather.GetAverageTemperaturesFromFactualForecasts(servicesFactualTemperatures,
+            //    fromDateTime, toDateTime);
+
+            //return averageTemperatureModel;
         }
 
         

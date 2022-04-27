@@ -73,13 +73,13 @@ namespace OnboardingWeatherAPI.Services
             return true;
         }
 
-        public async Task<List<FactualWeatherPrediction>?> GetFactualTemperaturesForCityByDate(long cityId, DateTime fromDate, DateTime toDate)
-        {
-            return await _context.FactualPredictions
-                .Include(e => e.Forecaster)
-                .Where(e => e.CityId == cityId && e.Forecaster.Name == "OpenWeather"
-                && e.Date >= fromDate && e.Date <= toDate)
-                .ToListAsync();
-        }
+        //public async Task<List<FactualWeatherPrediction>?> GetFactualTemperaturesForCityByDate(long cityId, DateTime fromDate, DateTime toDate)
+        //{
+        //    return await _context.FactualPredictions
+        //        .Include(e => e.Forecaster)
+        //        .Where(e => e.CityId == cityId && e.Forecaster.Name == "OpenWeather"
+        //        && e.Date >= fromDate && e.Date <= toDate)
+        //        .ToListAsync();
+        //}
     }
 }
