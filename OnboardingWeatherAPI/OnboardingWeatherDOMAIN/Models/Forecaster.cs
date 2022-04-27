@@ -9,6 +9,6 @@ namespace OnboardingWeatherAPI.Models
 
         public List<CityForecaster>? CityForecasters { get; set; }
 
-        //public ICollection<FactualWeatherPrediction> FactualWeatherPredictions { get; set; }
+        public List<FactualWeatherPrediction>? FactualPredictions { get; set; }
     }
 }

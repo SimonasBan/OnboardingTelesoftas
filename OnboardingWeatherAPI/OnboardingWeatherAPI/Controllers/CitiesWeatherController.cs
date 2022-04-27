@@ -6,6 +6,7 @@ using OnboardingWeatherAPI.Models.Shared;
 using OnboardingWeatherAPI.Services;
 using OnboardingWeatherDOMAIN.Models;
 using System.Text;
+using static OnboardingWeatherAPI.Services.CityWeatherService;
 //using OnboardingWeatherDOMAIN.Models;
 
 namespace OnboardingWeatherAPI.Controllers
@@ -18,19 +19,47 @@ namespace OnboardingWeatherAPI.Controllers
         private readonly ApplicationDbContext _context;
         private readonly CityWeatherService _cityWeather;
         private readonly OpenWeatherWeatherService _openWeather;
-        //private readonly OpenWeatherWeatherService _openWeatherWeatherService;
         private readonly IEnumerable<IWeatherForecastService> _weatherServices;
         public CitiesWeatherController(ApplicationDbContext context, CityWeatherService cityWeather
             , IEnumerable<IWeatherForecastService> weatherServices
-            , OpenWeatherWeatherService openWeather
-            /*,OpenWeatherWeatherService openWeatherWeatherService*/)
+            , OpenWeatherWeatherService openWeather)
         {
             _context = context;
             _cityWeather = cityWeather;
             _weatherServices = weatherServices;
             _openWeather = openWeather;
-            //_openWeatherWeatherService = openWeatherWeatherService;
         }
+
+        //2022-04-27
+
+        //Get a list of average factual (combined from all third party data in a city) temperature for a given date range by day;
+        //---    GET /cities/1/factualTemperatures?from-date=N&to-date=N
+        [HttpGet("{id}/factual-temperatures")]
+        public async Task<ActionResult<IEnumerable<TemperatureModel>>> GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] string fromDate, [FromQuery] string toDate)
+        {
+            var servicesFactualTemperatures = new List<List<FactualWeatherPrediction>?>();
+            DateTime fromDateTime = DateTime.Parse(fromDate);
+            DateTime toDateTime = DateTime.Parse(toDate);
+
+            if (fromDateTime > toDateTime)
+            {
+                return BadRequest("To date can not be bigger than from date");
+            }
+
+            foreach (var service in _weatherServices)
+            {
+                var factualTemperatures = await service.GetFactualTemperaturesForCityByDate(id, fromDateTime, toDateTime);
+                servicesFactualTemperatures.Add(factualTemperatures);
+            }
+
+            var averageTemperatureModel = _cityWeather.GetAverageTemperaturesFromFactualForecasts(servicesFactualTemperatures,
+                fromDateTime, toDateTime);
+
+            return averageTemperatureModel;
+        }
+
+        
+
 
         [HttpGet("test-factual-weather-update")]
         public async Task<bool> TestFactualWeatherUpdate()
@@ -225,13 +254,6 @@ namespace OnboardingWeatherAPI.Controllers
         }
 
 
-        //Get a list of average factual (combined from all third party data in a city) temperature for a given date range by day;
-        //---    GET /cities/1/factualTemperatures?from-date=N&to-date=N
-        [HttpGet("{id}/factual-temperatures")]
-        public string GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] string fromDate,[FromQuery] string toDate)
-        {
-            return $"From {fromDate}, to {toDate}";
-        }
 
         //Get each forecaster’s stdev compared to factual temperature measurements for each day in a given date range in a city;
         //---    GET /cities/1/stedv?from-date=N&to-date=N

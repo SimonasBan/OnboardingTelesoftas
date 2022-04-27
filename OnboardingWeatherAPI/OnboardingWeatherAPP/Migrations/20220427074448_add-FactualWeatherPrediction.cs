@@ -43,7 +43,8 @@ namespace OnboardingWeatherAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Temperature = table.Column<double>(type: "float", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CityId = table.Column<long>(type: "bigint", nullable: false)
+                    CityId = table.Column<long>(type: "bigint", nullable: false),
+                    ForecasterId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,12 +55,23 @@ namespace OnboardingWeatherAPI.Migrations
                         principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FactualPredictions_Forecasters_ForecasterId",
+                        column: x => x.ForecasterId,
+                        principalTable: "Forecasters",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_FactualPredictions_CityId",
                 table: "FactualPredictions",
                 column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FactualPredictions_ForecasterId",
+                table: "FactualPredictions",
+                column: "ForecasterId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_CityForecasters_Cities_CityId",
