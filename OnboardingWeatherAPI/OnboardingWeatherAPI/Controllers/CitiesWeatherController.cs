@@ -34,18 +34,19 @@ namespace OnboardingWeatherAPI.Controllers
 
         //Get a list of average factual (combined from all third party data in a city) temperature for a given date range by day;
         //---    GET /cities/1/factualTemperatures?from-date=N&to-date=N
+        //TODO: !!specify return types
         [HttpGet("{id}/factual-temperatures")]
-        public async Task<ActionResult<IEnumerable<TemperatureModel>>> GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] string fromDate, [FromQuery] string toDate)
+        public async Task<ActionResult<IEnumerable<TemperatureModel>>>
+            GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] DateTime fromDateTime,
+            [FromQuery] DateTime toDateTime)
         {
             var servicesFactualTemperatures = new List<List<FactualWeatherPrediction>?>();
-            DateTime fromDateTime = DateTime.Parse(fromDate);
-            DateTime toDateTime = DateTime.Parse(toDate);
 
             if (fromDateTime > toDateTime)
             {
-                return BadRequest("To date can not be bigger than from date");
+                return BadRequest("To-date can not be bigger than from-date");
             }
-
+            //TODO: !!simplify to one service
             foreach (var service in _weatherServices)
             {
                 var factualTemperatures = await service.GetFactualTemperaturesForCityByDate(id, fromDateTime, toDateTime);

@@ -37,6 +37,7 @@ namespace OnboardingWeather.Aplication.Services.Fetcher
                     {                     
                         foreach (var cityId in citiesIds)
                         {
+                            //TODO: !!Get also forecast
                             await service.AddTodaysFactualWeatherForCity(cityId);
                         }
                     }
