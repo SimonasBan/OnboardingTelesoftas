@@ -35,6 +35,11 @@ namespace OnboardingWeatherAPI.Models.Shared
                 .HasOne(e => e.City)
                 .WithMany(e => e.FactualPredictions)
                 .HasForeignKey(e => e.CityId);
+
+            modelBuilder.Entity<FactualWeatherPrediction>()
+                .HasOne(e => e.Forecaster)
+                .WithMany(e => e.FactualPredictions)
+                .HasForeignKey(e => e.ForecasterId);
         }
     }
 

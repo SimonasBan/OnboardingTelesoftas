@@ -8,7 +8,7 @@
         
         public long CityId { get; set; }
         public City City { get; set; }
-        //public Forecaster Forecaster { get; set; }
-        //public long ForecasterId { get; set; }
+        public long ForecasterId { get; set; }
+        public Forecaster Forecaster { get; set; }        
     }
 }

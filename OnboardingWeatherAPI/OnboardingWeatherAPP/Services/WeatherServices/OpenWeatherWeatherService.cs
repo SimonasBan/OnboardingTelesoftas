@@ -73,11 +73,10 @@ namespace OnboardingWeatherAPI.Services
             return true;
         }
 
-        public async Task<List<double>?> GetFactualTemperaturesForCityByDate(long cityId)
+        public async Task<List<FactualWeatherPrediction>?> GetFactualTemperaturesForCityByDate(long cityId)
         {
             return await _context.FactualPredictions
                 .Where(e => e.CityId == cityId)
-                .Select(e => e.Temperature)
                 .ToListAsync();
         }
     }

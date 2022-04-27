@@ -53,12 +53,17 @@ namespace OnboardingWeatherAPI.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<long>("ForecasterId")
+                        .HasColumnType("bigint");
+
                     b.Property<double>("Temperature")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
+
+                    b.HasIndex("ForecasterId");
 
                     b.ToTable("FactualPredictions");
                 });
@@ -107,7 +112,15 @@ namespace OnboardingWeatherAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("OnboardingWeatherAPI.Models.Forecaster", "Forecaster")
+                        .WithMany("FactualPredictions")
+                        .HasForeignKey("ForecasterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("City");
+
+                    b.Navigation("Forecaster");
                 });
 
             modelBuilder.Entity("OnboardingWeatherDOMAIN.Models.CityForecaster", b =>
@@ -139,6 +152,8 @@ namespace OnboardingWeatherAPI.Migrations
             modelBuilder.Entity("OnboardingWeatherAPI.Models.Forecaster", b =>
                 {
                     b.Navigation("CityForecasters");
+
+                    b.Navigation("FactualPredictions");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
+using OnboardingWeatherAPI.Models;
 using OnboardingWeatherAPI.Models.Shared;
 using OnboardingWeatherAPI.Services;
 
@@ -24,16 +25,16 @@ namespace OnboardingWeather.Aplication.Services
             return false;
         }
 
-        public async Task<List<double>?> GetFactualTemperaturesForCityByDate(long cityId)
+        public async Task<List<FactualWeatherPrediction>?> GetFactualTemperaturesForCityByDate(long cityId)
         {
             //Not implemented
-            var forTestingAwait = await _context.Cities.ToListAsync();
+            var forTestingAwait = await _context.FactualPredictions.ToListAsync();
 
-            var temps = new List<double>();
+            //var temps = new List<double>();
 
-            temps.Add(1);
+            //temps.Add(1);
 
-            return temps;
+            return forTestingAwait;
         }
     }
 }

@@ -30,17 +30,23 @@ namespace OnboardingWeatherAPI.Controllers
         }
 
 
-        //Get a list of average factual (combined from all third party data in a city) temperature for a given date range by day;
-        //---    GET /cities/1/factualTemperatures?from-date=N&to-date=N
-        [HttpGet("{id}/factual-temperatures")]
-        public async Task<string> GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] string fromDate, [FromQuery] string toDate)
-        {
-            foreach (var service in _weatherServices)
-            {
-                var temps = await service.GetFactualTemperaturesForCityByDate(id);
-            }
-            return $"From {fromDate}, to {toDate}";
-        }
+        ////Get a list of average factual (combined from all third party data in a city) temperature for a given date range by day;
+        ////---    GET /cities/1/factualTemperatures?from-date=N&to-date=N
+        //[HttpGet("{id}/factual-temperatures")]
+        //public async Task<double> GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] string fromDate, [FromQuery] string toDate)
+        //{
+        //    var servicesTemperatures = new List<List<double>?>();
+
+        //    foreach (var service in _weatherServices)
+        //    {
+        //        var temperatures = await service.GetFactualTemperaturesForCityByDate(id);
+        //        servicesTemperatures.Add(temperatures);
+        //    }
+
+        //    servicesTemperatures.Ave
+
+        //    return $"From {fromDate}, to {toDate}";
+        //}
 
 
         [HttpGet("test-factual-weather-update")]
