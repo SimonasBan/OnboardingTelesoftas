@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnboardingWeatherAPI.Models;
@@ -59,7 +60,11 @@ namespace OnboardingWeatherAPI.Controllers
             return averageTemperatureModel;
         }
 
-        
+        //public async Task<ActionResult<string>> Register()
+        //{
+        //    var user = new User { 
+        //    }
+        //}
 
 
         [HttpGet("test-factual-weather-update")]
@@ -89,6 +94,7 @@ namespace OnboardingWeatherAPI.Controllers
 
 
         //Get a list of available cities;    ---    GET /cities
+        [Authorize]
         [HttpGet]
         public async Task<IEnumerable<string>?> GetAvailableCities()
         {
