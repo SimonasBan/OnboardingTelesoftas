@@ -173,3 +173,8 @@ F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\O
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\IKVM.Runtime.dll
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Scrutor.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

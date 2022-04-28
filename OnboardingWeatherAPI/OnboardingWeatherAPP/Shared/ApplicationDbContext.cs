@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OnboardingWeatherAPI.Models.Configurations;
 using OnboardingWeatherDOMAIN.Models;
 //using OnboardingWeatherDOMAIN.Models;
 
 namespace OnboardingWeatherAPI.Models.Shared
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -18,6 +20,8 @@ namespace OnboardingWeatherAPI.Models.Shared
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            //--------
             modelBuilder.Entity<CityForecaster>()
             .HasKey(t => new { t.CityId, t.ForecasterId });
 
