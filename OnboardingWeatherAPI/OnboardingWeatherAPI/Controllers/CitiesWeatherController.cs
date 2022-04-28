@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnboardingWeatherAPI.Models;
@@ -89,6 +90,7 @@ namespace OnboardingWeatherAPI.Controllers
 
 
         //Get a list of available cities;    ---    GET /cities
+        [Authorize]
         [HttpGet]
         public async Task<IEnumerable<string>?> GetAvailableCities()
         {
