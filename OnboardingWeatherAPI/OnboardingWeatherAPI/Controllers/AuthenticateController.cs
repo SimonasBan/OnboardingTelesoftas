@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using static OnboardingWeatherAPI.Services.CityWeatherService;
 
 namespace OnboardingWeatherAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("user")]
     [ApiController]
     public class AuthenticateController : ControllerBase
     {
@@ -30,8 +32,10 @@ namespace OnboardingWeatherAPI.Controllers
         //"username": "User1",
         //  "email": "User1@gmail.com",
         //  "password": "User1!User1!"
-        [HttpPost]
-        [Route("login")]
+        [HttpPost("login")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AuthenticationResultModel))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(ProblemDetails))]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             var user = await _userManager.FindByNameAsync(model.Username);
@@ -52,22 +56,30 @@ namespace OnboardingWeatherAPI.Controllers
 
                 var token = GetToken(authClaims);
 
-                return Ok(new
+                return Ok(new AuthenticationResultModel
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
+                    Token = new JwtSecurityTokenHandler().WriteToken(token),
+                    Expiration = token.ValidTo
                 });
             }
-            return Unauthorized();
+            else
+            {
+                return Unauthorized();
+            }
         }
 
-        [HttpPost]
-        [Route("register")]
+
+        [HttpPost("register")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(string))]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var userExists = await _userManager.FindByNameAsync(model.Username);
             if (userExists != null)
+            {
                 return StatusCode(StatusCodes.Status500InternalServerError, "User already exists!");
+            }
 
             IdentityUser user = new()
             {
@@ -130,6 +142,12 @@ namespace OnboardingWeatherAPI.Controllers
 
             return token;
         }
+    }
+
+    public class AuthenticationResultModel
+    {
+        public string Token { get; set; }
+        public DateTime Expiration { get; set; }
     }
 
     public class RegisterModel
