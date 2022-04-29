@@ -1,0 +1,13 @@
+2022-04-29 10:20:17.675 +03:00 [INF] Now listening on: https://localhost:7019
+2022-04-29 10:20:17.700 +03:00 [INF] Now listening on: http://localhost:5019
+2022-04-29 10:20:17.703 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-04-29 10:20:17.704 +03:00 [INF] Hosting environment: Development
+2022-04-29 10:20:17.705 +03:00 [INF] Content root path: F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\
+2022-04-29 10:20:39.335 +03:00 [INF] HTTP GET / responded 404 in 0.2709 ms
+2022-04-29 10:23:03.774 +03:00 [INF] Now listening on: https://localhost:7019
+2022-04-29 10:23:03.796 +03:00 [INF] Now listening on: http://localhost:5019
+2022-04-29 10:23:03.800 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-04-29 10:23:03.801 +03:00 [INF] Hosting environment: Development
+2022-04-29 10:23:03.802 +03:00 [INF] Content root path: F:\Projects\Onboarding\GIT\README.md\OnboardingTelesoftas\OnboardingWeatherAPI\OnboardingWeatherAPI\
+2022-04-29 10:23:16.158 +03:00 [INF] Logging in
+2022-04-29 10:23:17.937 +03:00 [INF] HTTP POST /user/login responded 401 in 1810.0257 ms

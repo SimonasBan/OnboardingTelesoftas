@@ -6,6 +6,7 @@ using OnboardingWeatherAPI.Models;
 using OnboardingWeatherAPI.Models.Shared;
 using OnboardingWeatherAPI.Services;
 using OnboardingWeatherDOMAIN.Models;
+using Serilog;
 using System.Text;
 using static OnboardingWeatherAPI.Services.CityWeatherService;
 //using OnboardingWeatherDOMAIN.Models;
@@ -101,6 +102,7 @@ namespace OnboardingWeatherAPI.Controllers
         [Authorize]
         public async Task<IEnumerable<string>?> GetAvailableCities()
         {
+            Log.Information("GetCities");
             return await _cityWeather.GetAvailableCitiesNames();
             //return await _context.Cities.Select
             //    (e => e.Name).ToListAsync();
