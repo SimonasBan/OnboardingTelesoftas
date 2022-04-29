@@ -9,7 +9,8 @@ namespace OnboardingWeather.Aplication.Services.Fetcher
 
     public class ScopedProcessingService : IScopedProcessingService
     {
-        private readonly int Delay = 86400;
+        private readonly int Delay = 864000000;
+        //private readonly int Delay = 86400;
 
         private readonly CityService _cityService;
         private readonly IEnumerable<IWeatherForecastService> _weatherServices;

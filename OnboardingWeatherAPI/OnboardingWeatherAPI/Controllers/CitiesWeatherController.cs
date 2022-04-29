@@ -90,8 +90,8 @@ namespace OnboardingWeatherAPI.Controllers
 
 
         //Get a list of available cities;    ---    GET /cities
-        [Authorize]
         [HttpGet]
+        [Authorize]
         public async Task<IEnumerable<string>?> GetAvailableCities()
         {
             return await _cityWeather.GetAvailableCitiesNames();
