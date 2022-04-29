@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnboardingWeatherAPI.Models;
@@ -32,10 +33,14 @@ namespace OnboardingWeatherAPI.Controllers
 
         //2022-04-27
 
+        //TODO: ! Check if city exists
+
         //Get a list of average factual (combined from all third party data in a city) temperature for a given date range by day;
         //---    GET /cities/1/factualTemperatures?from-date=N&to-date=N
-        //TODO: !!specify return types
         [HttpGet("{id}/factual-temperatures")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK, Type=typeof(List<TemperatureModel>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type=typeof(ProblemDetails))]
         public async Task<ActionResult<IEnumerable<TemperatureModel>>>
             GetAverageFactualTemperaturesForCityByDate([FromRoute] long id, [FromQuery] DateTime fromDateTime,
             [FromQuery] DateTime toDateTime)
@@ -50,13 +55,16 @@ namespace OnboardingWeatherAPI.Controllers
             foreach (var service in _weatherServices)
             {
                 var factualTemperatures = await service.GetFactualTemperaturesForCityByDate(id, fromDateTime, toDateTime);
-                servicesFactualTemperatures.Add(factualTemperatures);
+                if (factualTemperatures != null)
+                {
+                    servicesFactualTemperatures.Add(factualTemperatures);
+                }
             }
 
             var averageTemperatureModel = _cityWeather.GetAverageTemperaturesFromFactualForecasts(servicesFactualTemperatures,
                 fromDateTime, toDateTime);
 
-            return averageTemperatureModel;
+            return Ok(averageTemperatureModel);
         }
 
         
@@ -90,6 +98,7 @@ namespace OnboardingWeatherAPI.Controllers
 
         //Get a list of available cities;    ---    GET /cities
         [HttpGet]
+        [Authorize]
         public async Task<IEnumerable<string>?> GetAvailableCities()
         {
             return await _cityWeather.GetAvailableCitiesNames();
